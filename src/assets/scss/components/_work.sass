@@ -22,15 +22,17 @@
 		li
 			margin-bottom: 2em
 
-	.work__modal
-		.close-button
-			color: $primary-color
-			span
-				font-size: 17px
-				vertical-align: middle
+.work__modal
+	.close-button
+		color: $primary-color
+		span
+			font-size: 17px
+			vertical-align: middle
 
-	.work__modal-img
-		padding: 60px 120px
-		img
-			display: block
-			margin: auto
+.work__modal-img
+	padding: 60px 120px
+	@include breakpoint(medium down)
+		padding: 60px 0
+	img
+		display: block
+		margin: auto
