@@ -1,0 +1,48 @@
+.works
+
+.work__link
+	margin-bottom: map-get($grid-column-gutter, medium)
+	@include breakpoint(medium down)
+		margin-bottom: map-get($grid-column-gutter, small)
+	&:hover
+		.work__img-container	
+			transform: scale(1.05)
+			&:after
+				width: 100%
+				transition-timing-function: ease-out
+				transition-delay: 400ms
+		.work__title
+			padding-left: 10px
+			transition-delay: 600ms
+
+.work__title
+	font-size: 1.25em
+	transition: all 200ms
+	transition-timing-function: ease-in
+	transition-delay: 0ms
+	&:after
+		display: block
+		width: 100px
+		height: 100px
+		background-color: $primary-color
+
+.work__img-container	
+	margin-bottom: map-get($grid-column-gutter, medium)/2
+	position: relative
+	transition: all 200ms
+	&:after
+		content: close-quote
+		position: absolute
+		bottom: -6px
+		left: 0
+		height: 6px
+		width: 0px
+		background-color: $primary-color
+		transition: all 200ms
+		transition-timing-function: ease-in
+		transition-delay: 0ms		
+
+	@include breakpoint(medium down)
+		margin-bottom: map-get($grid-column-gutter, small)/2
+
+.work__img

@@ -1,0 +1,43 @@
+<div class="work">
+	<div class="row">		
+		<div class=" small-12 medium-6 large-4 column work__about">			
+				<h2 class="work__title">{{ title }}</h2>
+				<p class="work__description">
+					{{ description }}
+				</p>
+				<ul class="work__list">
+				{{#each list}}
+					<li>{{ this }}</li>
+				{{/each}}					
+				</ul>
+		</div>
+		<div class="small-12 medium-6 large-8 column work__content">
+			<ul class="work__img">
+				{{#each video}}					
+					<li>
+						<div class="responsive-embed widescreen">
+							<iframe width="560" height="315" src="https://www.youtube.com/embed/{{ this }}?rel=0;controls=1;showinfo=0;modestbranding=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+						</div>
+					</li>
+				{{/each}}
+				{{#each img}}					
+					<li>
+						<a class="work__reveal">
+							<img src="../assets/img/work/{{ this }}" alt="">
+						</a>
+					</li>
+				{{/each}}		
+			</ul>
+		</div>
+		
+		<div class="reveal full work__modal" id="element" data-reveal data-animation-in="fade-in" data-animation-out="fade-out">
+			<button class="close-button" data-close aria-label="Close modal" type="button">
+				<span aria-hidden="true">FECHAR</span> &times;
+			</button>
+			<div class="work__modal-img">
+				Loading
+			</div>
+		</div>
+
+	</div>
+</div>

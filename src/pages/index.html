@@ -1,34 +1,41 @@
-<div class="nav">
-	<div class="row">
-		<div class="medium-6 column nav__header">
-			<h1 class="nav__title">André Magno</h1>
-			<div class="nav__subtitle">UX Designer</div>
-		</div>
-		<div class="medium-6 column nav__links">
-			<a href="#" class="nav__link">Sobre</a>
-		</div>
-	</div>
-</div>
-<div class="projects horizontal">
+---
+layout: default
+
+work:
+- titulo: Dinda Foods
+  pasta: dinda-foods
+- titulo: Clube Melissa
+  pasta: clube-melissa
+- titulo: Electrolux Built-in
+  pasta: electrolux
+- titulo: 'HBO #DesafioGO'
+  pasta: hbo-desafiogo
+- titulo: Melissa SWAP
+  pasta: melissa-swap
+- titulo: Netflix Bright Facemask
+  pasta: netflix-bright
+- titulo: HBO GO Landing Page
+  pasta: hbogolanding
+- titulo: "TNT Emmy's WebApp"
+  pasta: tnt-emmy
+- titulo: Quero Quitar
+  pasta: queroquitar
+- titulo: Ultrahaus
+  pasta: ultrahaus
+- titulo: Goodyear Corrida para Nascar
+  pasta: goodyear-nascar
+
+---
+
+<div class="works">
 	<div class="row">		
-		<a href="#" class="project__link active">
-			<img class="project__img" src="assets/img/teste.jpg" alt="">
-			<h2 class="project__title">Título teste</h2>
+		{{#each work}}
+		<a href="/{{ this.pasta }}/" class="small-6 large-4 column work__link">
+			<div class="work__img-container">
+				<img class="work__img" src="assets/img/thumb/{{ this.pasta }}.jpg" alt="">
+			</div>
+			<h2 class="work__title">{{ this.titulo }}</h2>
 		</a>
-		<a href="#" class="project__link">
-			<img class="project__img" src="assets/img/teste.jpg" alt="">
-			<h2 class="project__title">Título teste</h2>
-		</a>
-		<a href="#" class="project__link">
-			<img class="project__img" src="assets/img/teste.jpg" alt="">
-			<h2 class="project__title">Título teste</h2>
-		</a>
-	</div>
-</div>
-<div class="graph">
-	<div class="row">
-		<div class="bar column active"></div>
-		<div class="bar column"></div>
-		<div class="bar column"></div>
+		{{/each}}
 	</div>
 </div>

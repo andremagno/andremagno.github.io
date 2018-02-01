@@ -1,70 +1,72 @@
+*
+	outline: 0 !important
+
+body
+	@include breakpoint(medium down)
+		font-size: 14px
+
 .nav
-	padding: 60px 0
+	padding-top: map-get($grid-column-gutter, medium)
+	padding-bottom: map-get($grid-column-gutter, medium)
+	@include breakpoint(medium down)
+		padding-top: map-get($grid-column-gutter, small)
+		padding-bottom: map-get($grid-column-gutter, small)
 	.row
 		@extend .align-top
 .nav__header
 	font-weight: 700
+
+.nav__work
+	.nav__header
+		padding-left: 58px
+		position: relative
+
 .nav__title
-	font-size: 20px
+	font-size: 1.25em
 	margin: 0
 	line-height: 1
 .nav__subtitle
-	font-size: 18px
+	font-size: 1em
 	color: $primary-color
 .nav__links
 	@extend .text-right
 .nav__link
 	font-weight: 700
-	font-size: 20px
+	font-size: 1.25em
 
-.projects
-.project__link
-.project__img
-.project__title
-
-.horizontal
-	overflow-x: scroll
-	max-height: 1000px
-	width: 100vw
-	white-space: nowrap
-	&::-webkit-scrollbar
-		width: 0
-		background: transparent
-	.row
+.nav__back
+	color: $primary-color
+	display: block
+	position: absolute
+	text-align: center
+	border-radius: 1000px
+	height: 40px
+	line-height: 38px
+	width: 40px
+	border: 2px solid $primary-color
+	left: 0
+	overflow: hidden
+	.nav__back-bg
+		position: absolute
+		z-index: 9
+		width: 100%
+		height: 100%
 		display: block
-
-.project__link
-	@include grid-column-gutter()
-	display: inline-block
-	margin-right: 60px
-
-.project__title
-	font-size: 20px
-	
-.project__img
-	max-width: 800px
-	margin-bottom: 30px
-
-.graph
-	position: fixed
-	bottom: 0
-	width: 100vw
-	.row
-		@include grid-column-gutter()
-		@extend .align-bottom
-		height: 12px
-.bar
-	height: 5px
-	transition: all 200ms
-	&:nth-child(1)
-		background-color: #681405
-	&:nth-child(2)
-		background-color: #EC6953
-	&:nth-child(3)
+		margin-left: -100%
 		background-color: $primary-color
-	&:nth-child(4)
-		background-color: #682F25
-	&:nth-child(5)
-		background-color: #B52209
-	&.active
-		height: 12px
+		transition: all 500ms
+		transition-timing-function: ease-in
+	span
+		z-index: 10
+		position: relative
+		transition: all 250ms
+		transition-delay: 100ms
+	&:hover
+		span
+			color: $white
+		.nav__back-bg
+			margin-left: 0
+
+
+
+
