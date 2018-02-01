@@ -1,0 +1,43 @@
+---
+layout: internal
+
+title: 'André Magno'
+
+description: 
+- 'Sou um UX Designer e trabalho em São Paulo. Trabalho com design de produto, UX, UI, user testing e protótipos para projetar soluções que são fáceis e agradáveis de usar. Acredito que o design pode ser usado como uma ferramenta para permitir experiências significativas em marcas, produtos e serviços. Tenho paixão por aprender, idealizar e criar a experiência para o usuário.'
+- 'Minha experiência inclui desde trabalhar em uma agência digital até startups que estão começando e trabalhei com marcas como HBO, Netflix, Google, Melissa, TNT, A&E, Electrolux, Goodyear, Dinda Foods, Drinkfinity, Dunelli, Belas Artes, entre outros.'
+
+img: 'about-2.jpg'
+
+links:
+- name: 'LinkedIn'
+  url: 'https://www.linkedin.com/in/andrmagno'
+- name: 'andrmgno@gmail.com'
+  url: 'mailto:andrmgno@gmail.com'
+---
+
+<div class="about">
+	<div class="row">		
+		<div class=" small-12 medium-6 column about__image">
+			<div class="about__image-container">				
+				<img src="../assets/img/{{ img }}" alt="">
+			</div>
+		</div>
+		<div class="small-12 medium-6 column about__content">			
+			<h2 class="about__title">{{ title }}</h2>
+			{{#each description}}
+				<p class="about__description">
+					{{this}}
+				</p>
+			{{/each}}
+			<ul class="about__list menu align-left">
+			{{#each links}}
+				<li>
+					<a href="{{ this.url }}" target="_blank">{{ this.name }}</a>
+				</li>
+			{{/each}}					
+			</ul>
+		</div>
+		
+	</div>
+</div>
