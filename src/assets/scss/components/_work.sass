@@ -1,30 +1,36 @@
 .work
+	.work__about
 
-.work__about
+	.work__title
+		font-size: 2em
+		margin-bottom: 1.5em
 
-.work__title
-	font-size: 2em
-	margin-bottom: 1.5em
+	.work__content
 
-.work__content
+	.work__list, .work__img
+		list-style: none
+		margin-left: 0
 
-.work__list, .work__img
-	list-style: none
-	margin-left: 0
+	.work__list, .work__description
+		font-size: 18px
 
-.work__img
-	li
-		margin-bottom: 2em
+	.work__list
+		@include breakpoint(small only)
+			margin-bottom: 40px
 
-.work__modal
-	.close-button
-		color: $primary-color
-		span
-			font-size: 17px
-			vertical-align: middle
+	.work__img
+		li
+			margin-bottom: 2em
 
-.work__modal-img
-	padding: 60px 120px
-	img
-		display: block
-		margin: auto
+	.work__modal
+		.close-button
+			color: $primary-color
+			span
+				font-size: 17px
+				vertical-align: middle
+
+	.work__modal-img
+		padding: 60px 120px
+		img
+			display: block
+			margin: auto
