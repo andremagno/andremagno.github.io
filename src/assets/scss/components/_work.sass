@@ -1,8 +1,10 @@
 .work
-	.work__about
+	.row__full
+		max-width: 100% !important
 
+	.work__about
 	.work__title
-		font-size: 2em
+		font-size: 3em
 		margin-bottom: 1.5em
 
 	.work__content
@@ -13,10 +15,16 @@
 
 	.work__list, .work__description
 		font-size: 18px
+		@include breakpoint(small only)
+			font-size: 16px
 
 	.work__list
 		@include breakpoint(small only)
 			margin-bottom: 40px
+
+	.work__description
+		&:empty
+			display: none
 
 	.work__img
 		li
@@ -36,3 +44,42 @@
 	img
 		display: block
 		margin: auto
+
+.work__extended
+	ul
+		margin-left: 0
+		margin-bottom: 3em
+		@include breakpoint(small only)
+			margin-bottom: 0
+	ul li
+		font-size: 18px
+		list-style: none
+		margin-bottom: 1rem
+		padding-left: 40px
+		position: relative
+		@include breakpoint(small only)
+			font-size: 16px
+		&:before
+			content: ''
+			display: block
+			width: 20px
+			height: 5px
+			border-radius: 0
+			background-color: $primary-color
+			vertical-align: middle
+			margin-right: 20px
+			position: absolute
+			left: 0
+			margin-top: 10px
+
+	h5
+		color: $white
+
+	.work__img
+		margin-bottom: 2rem
+		img
+			width: 100%
+
+	.work__subtitle
+		margin: 1em 0
+

@@ -1,7 +1,10 @@
 ---
+
 layout: home
 
 work:
+- titulo: Payment gateway
+  pasta: gateway-pagamento
 - titulo: Dinda Foods
   pasta: dinda-foods
 - titulo: Clube Melissa
@@ -26,15 +29,22 @@ work:
   pasta: goodyear-nascar
 
 ---
-
+<!-- <div class="title">
+  <div class="row">
+    <div class="small-12 large-12 column">      
+      <h1>André Magno</h1>
+      <h2>UX Designer</h2>    
+    </div>
+  </div>
+</div> -->
 <div class="works">
 	<div class="row">		
 		{{#each work}}
-		<a href="/{{ this.pasta }}/" class="small-6 large-4 column work__link">
+		<a href="/{{ this.pasta }}/" class="small-6 large-6 column work__link">
 			<div class="work__img-container">
-				<img class="work__img" src="assets/img/thumb/{{ this.pasta }}.jpg" alt="">
+				<img class="work__img" src="assets/img/thumb/{{ this.pasta }}.jpg" alt="{{ this.titulo }}">
 			</div>
-			<h2 class="work__title">{{ this.titulo }}</h2>
+			<h3 class="work__title">{{ this.titulo }}</h3>
 		</a>
 		{{/each}}
 	</div>

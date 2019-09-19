@@ -1,0 +1,90 @@
+<!-- 
+
+subtitle: subtitle
+quote: 'Beauty has so many forms, and I think the most beautiful thing is confidence and loving yourself.',
+link: http://www.uol.com.br,
+
+ -->
+
+<div class="work work__extended">
+	<div class="row align-center">
+		<div class="medium-12 large-8 column">			
+			<h2 class="work__title">{{ title }}</h2>
+		</div>
+	</div>
+	
+	{{#each content}}
+	  {{#each this}}
+	    
+		{{#if this.text}}
+		<div class="row align-center">
+			<div class="medium-12 large-8 column">
+				<p class="work__description">
+					{{{ this.text }}}
+				</p>
+			</div>
+		</div>	
+		{{/if}}
+
+		{{#if this.subtitle}}
+		<div class="row align-center">
+			<div class="medium-12 large-8 column">
+				<h3 class="work__subtitle">
+					{{ this.subtitle }}
+				</h3>
+			</div>
+		</div>
+		{{/if}}
+
+		{{#if this.img}}
+		<div class="row align-center">
+			<div class="medium-12 large-8 column">
+				<p class="work__img">
+					<a class="work__reveal">
+						<img src="../assets/img/work/{{ this.img }}" alt="">
+					</a>
+				</p>
+			</div>
+		</div>
+		{{/if}}
+		{{#if this.imgfull}}
+		<div class="row row__full">
+			<div class="medium-12">
+				<p class="work__img">
+					<a class="work__reveal">
+						<img src="../assets/img/work/{{ this.imgfull }}" alt="">
+					</a>
+				</p>
+			</div>
+		</div>
+		{{/if}}
+		{{#if this.quote}}
+		<div class="row align-center">
+			<div class="medium-12 large-8 column">
+				<blockquote>
+				    {{ this.quote }}
+				</blockquote>
+			</div>
+		</div>
+		{{/if}}
+		{{#if this.link}}
+		<div class="row align-center">
+			<div class="medium-12 large-8 column">
+				<a href='{{ this.link }}' target='_blank'>{{ this.link }}</a>						
+			</div>
+		</div>
+		{{/if}}				
+
+	  {{/each}}
+	{{/each}}
+		
+	<div class="reveal full work__modal" id="element" data-reveal data-animation-in="fade-in" data-animation-out="fade-out">
+		<button class="close-button" data-close aria-label="Close modal" type="button">
+			<span aria-hidden="true">FECHAR</span> &times;
+		</button>
+		<div class="work__modal-img">
+			Loading
+		</div>
+	</div>
+
+</div>
