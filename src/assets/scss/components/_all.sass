@@ -8,7 +8,9 @@ body
 .nav
 	padding-top: map-get($grid-column-gutter, medium)
 	padding-bottom: map-get($grid-column-gutter, medium)
+	
 	@include breakpoint(medium down)
+		font-size: 36px
 		padding-top: map-get($grid-column-gutter, small)
 		padding-bottom: map-get($grid-column-gutter, small)
 	.row
@@ -23,18 +25,26 @@ body
 		position: relative
 
 .nav__title
-	font-size: 20px
-	margin: 0
+	font-size: 60px
+	margin: 0 0 8px
 	line-height: 1
+	font-weight: 900
+	@include breakpoint(medium down)
+		font-size: 36px
 .nav__subtitle
-	font-size: 16px
+	font-size: 36px
 	color: $primary-color
+	font-weight: 900
+	@include breakpoint(medium down)
+		font-size: 20px
 .nav__links
 	@extend .text-right
 .nav__link
-	font-weight: 700
-	font-size: 20px
-	line-height: 1
+	font-weight: 900
+	font-size: 36px
+	vertical-align: top
+	@include breakpoint(medium down)
+		font-size: 20px
 
 .nav__back
 	color: $primary-color
