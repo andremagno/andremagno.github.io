@@ -1,17 +1,18 @@
 ---
 layout: internal
 
-title: 'André Magno'
+title: 'Sobre'
 
 description: 
-- 'Sou um UX Designer e trabalho com design de produto, UX, UI, user testing e protótipos para projetar soluções que são fáceis e agradáveis de usar. Acredito que o design pode ser usado como uma ferramenta para permitir experiências significativas em marcas, produtos e serviços.'
-- 'Minha experiência inclui desde agências digitais até startups que estão começando e trabalhei com marcas como HBO, Netflix, Google, Melissa, TNT, A&E, Electrolux, Goodyear, Dinda Foods, Drinkfinity, Dunelli, Belas Artes, entre outros.'
+- 'Olá, sou André. Trabalho com Product Design / UX Design desde 2013, quando cursei pós em Design Digital na Belas Artes. Atualmente sou Product Designer Senior na Zup.'
+- 'Minha experiência inclui agências digitais, startups, fintechs e trabalhos para empresas como Itaú, Iti, Santander, OLX, HBO, Netflix, Google, Melissa, TNT, A&E, Electrolux, Goodyear, Dinda Foods, Drinkfinity, Dunelli, Belas Artes, entre outras.'
+- 'Em 2020 comecei a dar mentorias voluntariamente através do Mentora - Mentorias descomplicadas, onde consigo bater um papo e orientar profissionais com dicas sobre a profissão ou de reposicionamento no mercado.'
 
-img: 'about-2.jpg'
+img: 'about-3.jpg'
 
 links:
 - name: 'LinkedIn'
-  url: 'https://www.linkedin.com/in/andrmagno'
+  url: 'https://www.linkedin.com/in/andremgno'
 - name: 'andrmgno@gmail.com'
   url: 'mailto:andrmgno@gmail.com'
 ---
@@ -25,11 +26,6 @@ links:
 		</div>
 		<div class="small-12 medium-6 column about__content">			
 			<h2 class="about__title">{{ title }}</h2>
-			{{#each description}}
-				<p class="about__description">
-					{{this}}
-				</p>
-			{{/each}}
 			<ul class="about__list menu align-left">
 			{{#each links}}
 				<li>
@@ -37,6 +33,12 @@ links:
 				</li>
 			{{/each}}					
 			</ul>
+			{{#each description}}
+				<p class="about__description">
+					{{this}}
+				</p>
+			{{/each}}
+			
 		</div>
 		
 	</div>

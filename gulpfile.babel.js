@@ -135,10 +135,8 @@ function javascript() {
 // In production, the images are compressed
 function images() {
   return gulp.src('src/assets/img/**/*')
-    .pipe($.if(PRODUCTION, $.imagemin({
-      progressive: true
-    })))
     .pipe(gulp.dest(PATHS.dist + '/assets/img'));
+    /*.pipe($.if(PRODUCTION, $.imagemin()))*/
 }
 
 // Start a server with BrowserSync to preview the site in

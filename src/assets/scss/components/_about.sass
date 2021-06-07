@@ -3,12 +3,12 @@
 	margin-bottom: 1.5em
 .about__title
 	font-size: 2em
-	margin-bottom: 1.5em
 .about__description, .about__list
-	font-size: 24px
+	font-size: 1.2em	
 .about__description
 	margin-bottom: 1.5em
 .about__list
+	margin-bottom: 1.5em
 	li
 		&:first-child
 			a
@@ -22,16 +22,17 @@
 	position: relative
 	background-color: $primary-color
 	height: 450px
+	margin-top: 40px
 	@include breakpoint(small only)
 		height: auto
 .about__image
 	position: relative
 	img
-		width: 30%
+		width: 50%
 		display: block		
 		position: absolute
 		right: 40px
-		bottom: -40px
+		top: -40px
 		z-index: 2
 		@include breakpoint(small only)
 			width: 50%
