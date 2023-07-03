@@ -36,6 +36,26 @@ link: http://www.uol.com.br,
 		</div>
 		{{/if}}
 
+		{{#if this.title3}}
+		<div class="row align-center">
+			<div class="medium-12 large-8 column">
+				<h4>
+					{{ this.title3 }}
+				</h4>
+			</div>
+		</div>
+		{{/if}}
+
+		{{#if this.text2}}
+		<div class="row align-center">
+			<div class="medium-12 large-8 column">
+				<p class="work__description">
+					{{{ this.text2 }}}
+				</p>
+			</div>
+		</div>	
+		{{/if}}
+
 		{{#if this.img}}
 		<div class="row align-center">
 			<div class="medium-12 large-8 column">
@@ -70,7 +90,7 @@ link: http://www.uol.com.br,
 		{{#if this.link}}
 		<div class="row align-center">
 			<div class="medium-12 large-8 column">
-				<a href='{{ this.link }}' target='_blank'>{{ this.link }}</a>						
+				<a href="{{ this.link }}" target="_blank">{{ this.link }}</a>
 			</div>
 		</div>
 		{{/if}}				

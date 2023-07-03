@@ -2,6 +2,9 @@
 	.row__full
 		max-width: 100% !important
 
+		.work__img img
+			border-radius: 0
+
 	.work__about
 	.work__title
 		font-size: 3em
@@ -27,8 +30,30 @@
 			display: none
 
 	.work__img
+		img
+			border-radius: $global-radius
 		li
 			margin-bottom: 2em
+
+
+
+	.work__numbers
+		padding: 1.2rem
+		background-color: rgba($blackbold, 0.15)
+		border-radius: $global-radius
+
+	.work__number
+		font-size: 1.5em
+		font-weight: bold
+
+	blockquote
+		color: $black
+		border-left-width: 3px
+		border-color: $primary-color
+		padding-top: 1rem
+		padding-bottom: 1rem
+		font-style: italic
+		font-size: 1.1rem
 
 .work__modal
 	.close-button
@@ -54,17 +79,17 @@
 	ul li
 		font-size: 18px
 		list-style: none
-		margin-bottom: 1rem
-		padding-left: 40px
+		margin-bottom: 0.5rem
+		padding-left: 20px
 		position: relative
 		@include breakpoint(small only)
 			font-size: 16px
 		&:before
 			content: ''
 			display: block
-			width: 20px
+			width: 5px
 			height: 5px
-			border-radius: 0
+			border-radius: 5px
 			background-color: $primary-color
 			vertical-align: middle
 			margin-right: 20px
@@ -83,3 +108,5 @@
 	.work__subtitle
 		margin: 1em 0
 
+	strong
+		font-size: 18px

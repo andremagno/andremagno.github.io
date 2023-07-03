@@ -21,24 +21,26 @@
 .about__image-container
 	position: relative
 	background-color: $primary-color
-	height: 450px
+	height: 380px
 	margin-top: 40px
 	@include breakpoint(small only)
 		height: auto
 .about__image
 	position: relative
 	img
-		width: 50%
+		width: 70%
 		display: block		
 		position: absolute
-		right: 40px
-		top: -40px
+		right: 0
+		top: 0
 		z-index: 2
+		margin: 10px
 		@include breakpoint(small only)
 			width: 50%
 			position: relative
 			right: 0
-			left: 40px
+			left: 0
+			margin: 0 auto
 
 
 @include breakpoint(small only)
