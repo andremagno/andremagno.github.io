@@ -1,25 +1,19 @@
 # André Magno - Portfolio
 
-## Setup
-```bash
-npm v9.11.2 (use nvm to install node)
-gulp v4.0
-foundation-cli v2.2.6
-```
 
 ## Installation
 ```bash
-npm install
+yarn install
 ```
 
 ## Development
 ```bash
-foundation watch
+yarn start
 ```
 
 ## Deploy
 ```bash
-foundation build
+yarn build
 ```
 
 ```bash
