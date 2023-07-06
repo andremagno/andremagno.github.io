@@ -1,33 +1,29 @@
-.works
-
+.section__projects
+	background-color: $primary-color
+	h2
+		color: $white
 	.work__link
-		margin-bottom: map-get($grid-column-gutter, medium)
+		margin-bottom: map-get($grid-column-gutter, medium)		
+		filter: grayscale(100%)
 		@include breakpoint(medium down)
-			margin-bottom: map-get($grid-column-gutter, small)
+			margin-bottom: map-get($grid-column-gutter, small)			
 		&:hover, &:active, &:focus
-			.work__img-container	
-				transform: scale(0.95)
-				&:after
-					width: 100%
-					transition-timing-function: ease-out
-					transition-delay: 200ms
-			.work__title
-				padding-left: 10px
-				transition-delay: 300ms
+			filter: grayscale(0%)
+			transition: all 500ms ease-out
+			
 
 	.work__title
-		font-size: 1.75em
 		transition: all 200ms
 		transition-timing-function: ease-in
 		transition-delay: 0ms
 		margin-bottom: 0
-		&:after
-			display: block
-			width: 100px
-			height: 100px
-			background-color: $primary-color
-		@include breakpoint(small only)
-			font-size: 1.25em
+		color: $white
+		text-decoration: underline
+		font-size: 32px
+		font-weight: 600
+		@include breakpoint(medium down)
+			font-size: 24px
+
 
 	.work__img-container	
 		margin-bottom: map-get($grid-column-gutter, medium)/2
@@ -49,3 +45,22 @@
 			margin-bottom: map-get($grid-column-gutter, small)/2
 
 	.work__img
+
+.section__container
+	padding: 48px
+	@include breakpoint(medium down)
+		padding: 24px
+	h2
+		margin-bottom: 48px
+		@include breakpoint(medium down)
+			margin-bottom: 24px
+			font-size: 32px
+
+.section__home
+	background-color: $light-gray
+	padding: 96px 48px
+	@include breakpoint(medium down)
+		padding: 48px 24px
+
+.section__about
+	background-color: $light-gray
