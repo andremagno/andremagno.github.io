@@ -19,36 +19,79 @@
 	<link rel="icon" href="assets/img/favicon.ico" sizes="any">
 </head>
 
-<body><div class="nav">
-	<div class="row">
-		<div class="small-9 medium-6 column nav__header">			
-			<h1 class="nav__title">André Magno</h1>
-			<div class="nav__subtitle">UX / Product Designer</div>
-		</div>
-		<div class="small-3 medium-6 column nav__links">
-			<a href="/about" class="nav__link">Sobre</a>
-		</div>
-	</div>		
-</div>
-
-<!-- <div class="title">
-  <div class="row">
-    <div class="small-12 large-12 column">      
-      <h1>André Magno</h1>
-      <h2>UX Designer</h2>    
+<body>
+<div class="grid-container fluid">
+  <div class="grid-x section__container section__home">
+    <div class="medium-12 cell nav__header">    
+      <h1 class="nav__title">André Magno</h1>
+      <div class="nav__subtitle">Product designer</div>
+      <div class="nav__links">
+        <a href="#" target="" class="nav__link">Projetos</a>
+        <a href="#" target="" class="nav__link">Sobre</a>
+        <a href="https://www.linkedin.com/in/andremgno" target="_blank" class="nav__link">LinkedIn</a>
+        <a href="mailto:andrmgno@gmail.com" target="_blank" class="nav__link">Email</a>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="grid-container fluid">
+  <div class="section__container section__projects">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-12 cell">
+        <h2 class="section__title">Projetos</h2>
+      </div>
+      <a href="/vivovaloriza/" class="medium-6 cell work__link">
+        <div class="work__img-container">
+          <img class="work__img" src="assets/img/thumb/vivovaloriza.jpg" alt="Vivo Valoriza">
+        </div>
+        <h3 class="work__title">Vivo Valoriza</h3>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="grid-container fluid">
+  <div class="section__container section__about">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-12 cell">
+        <h2 class="section__title">Sobre</h2>
+      </div>
+      <div class="medium-7 cell about__content">
+        <p class="about__description">
+          Olá, sou André, um Product Designer com mais de 10 anos de experiência em empresas como Itaú, Iti, Santander, OLX, HBO, Netflix, Melissa e Centro Universitário Belas Artes.
+        </p>
+        <p class="about__description">
+          Como Product Designer, minha responsabilidade é garantir que a experiência do usuário seja agradável e eficiente, alinhando o design às metas e objetivos da empresa para garantir o sucesso do produto.
+        </p>
+        <p class="about__description">
+          Trabalho no desenvolvimento end-to-end de produtos digitais, passando pelas etapas de descoberta, pesquisa, ideação, UX, UI, design system, prototipagem, handoff, entrega final, acompanhamento de métricas, entre outras. Utilizo metodologias como pesquisa de usuário, entrevistas, análise competitiva, facilitação de workshops, criação de personas, mapeamento de jornadas do usuário, prototipagem, testes a/b, testes de usabilidade e ferramentas como Figma, Miro, Maze, Hotjar e GA.
+        </p>
+        <p class="about__description">
+          Possuo experiência em coordenação, realizando mentorias, 1:1, workshops técnicos e também em contratação, executando a seleção de candidatos, entrevistas e avaliação técnica.
+        </p>
+      </div>
+      <div class="medium-5 cell about__image">
+        <div class="about__image-container">        
+          <img src="../assets/img/about-3.jpg" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="works">
+  <div class="row">		
+    <a href="/vivovaloriza/" class="small-6 large-6 column work__link">
+      <div class="work__img-container">
+        <img class="work__img" src="assets/img/thumb/vivovaloriza.jpg" alt="Vivo Valoriza">
+      </div>
+      <h3 class="work__title">Vivo Valoriza</h3>
+    </a>
+  </div>
 </div> -->
-<div class="works">
-	<div class="row">		
-		<a href="/vivovaloriza/" class="small-6 large-6 column work__link">
-			<div class="work__img-container">
-				<img class="work__img" src="assets/img/thumb/vivovaloriza.jpg" alt="Vivo Valoriza">
-			</div>
-			<h3 class="work__title">Vivo Valoriza</h3>
-		</a>
-	</div>
-<!--
+
+<!-- 
   <div class="row">    
     <div class="large-12 column">
       <h4>Outros projetos</h4>
@@ -90,9 +133,8 @@
       </a> -          
     </div>
   </div>
--->
-</div>
 
+-->
     <script src="assets/js/app.js"></script>
   </body>
 </html>
