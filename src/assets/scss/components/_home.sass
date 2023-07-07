@@ -5,12 +5,15 @@
 	.work__link
 		margin-bottom: map-get($grid-column-gutter, medium)		
 		filter: grayscale(100%)
+		transition: all 500ms ease-out
 		@include breakpoint(medium down)
 			margin-bottom: map-get($grid-column-gutter, small)			
 		&:hover, &:active, &:focus
 			filter: grayscale(0%)
-			transition: all 500ms ease-out
-			
+			.work__img	
+				transform: scale(1.1)
+			.work__title
+				color: scale-color($white, $lightness: -14%)
 
 	.work__title
 		transition: all 200ms
@@ -29,6 +32,8 @@
 		margin-bottom: map-get($grid-column-gutter, medium)/2
 		position: relative
 		transition: all 200ms
+		border-radius: $global-radius
+		overflow: hidden
 		&:after
 			content: close-quote
 			position: absolute
@@ -45,6 +50,7 @@
 			margin-bottom: map-get($grid-column-gutter, small)/2
 
 	.work__img
+		transition: all 250ms ease-out
 
 .section__container
 	padding: 48px

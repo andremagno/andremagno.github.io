@@ -48,10 +48,10 @@ img: 'about-3.jpg'
 
 links:
 - name: 'Projetos'
-  url: '#'
+  url: '#projects'
   target: ''
 - name: 'Sobre'
-  url: '#'
+  url: '#about'
   target: ''
 - name: 'LinkedIn'
   url: 'https://www.linkedin.com/in/andremgno'
@@ -64,19 +64,19 @@ links:
 
 <div class="grid-container fluid">
   <div class="grid-x section__container section__home">
-    <div class="medium-12 cell nav__header">    
+    <div class="medium-12 cell nav__header">
       <h1 class="nav__title">{{ section__home-name }}</h1>
       <div class="nav__subtitle">{{ section__home-role }}</div>
-      <div class="nav__links">
+      <div class="nav__links grid-x">
         {{#each links}}
-        <a href="{{ this.url }}" target="{{ this.target }}" class="nav__link">{{ this.name }}</a>
+        <a href="{{ this.url }}" target="{{ this.target }}" class="small-12 medium-shrink cell nav__link">{{ this.name }}</a>
         {{/each}}      
       </div>
     </div>
   </div>
 </div>
 
-<div class="grid-container fluid">
+<div id="projects" class="grid-container fluid">
   <div class="section__container section__projects">
     <div class="grid-x grid-padding-x">
       <div class="medium-12 cell">
@@ -94,7 +94,7 @@ links:
   </div>
 </div>
 
-<div class="grid-container fluid">
+<div id="about" class="grid-container fluid">
   <div class="section__container section__about">
     <div class="grid-x grid-padding-x">
       <div class="medium-12 cell">
