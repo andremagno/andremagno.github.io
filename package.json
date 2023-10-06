@@ -40,7 +40,7 @@
     "js-yaml-js-types": "^1.0.0",
     "node-sass": "^7.0.0",
     "panini": "latest",
-    "postcss": "^8.3.11",
+    "postcss": "^8.4.31",
     "postcss-uncss": "^0.17.0",
     "rimraf": "^3.0.2",
     "style-sherpa": "^1.0.2",
