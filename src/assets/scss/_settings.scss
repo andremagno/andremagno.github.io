@@ -58,8 +58,9 @@
 //  53. Title Bar
 //  54. Tooltip
 //  55. Top Bar
-//  56. Xy Grid
+//  57. Xy Grid
 
+@use "sass:color";
 @import 'util/util';
 
 // 1. Global
@@ -71,19 +72,19 @@ $global-lineheight: 1.5;
 $foundation-palette: (
   primary: #094D96,
   secondary: #D11723,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+  "success": #3adb76,
+  "warning": #ffae00,
+  "alert": #cc4b37,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #222222;
-$white: #fafafa;
 $blackbold: #000000;
+$white: #fafafa;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: 'SF Display','Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'SF Display', 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-safe-padding: false;
 $body-antialiased: true;
 $global-margin: 1rem;
@@ -107,22 +108,25 @@ $print-hrefs: true;
 // 2. Breakpoints
 // --------------
 
+$-zf-size: null;
 $breakpoints: (
-  small: 0,
-  medium: 640px,
-  large: 1024px,
-  xlarge: 1200px,
-  xxlarge: 1440px,
+  "small": 0,
+  "medium": 640px,
+  "large": 1024px,
+  "xlarge": 1200px,
+  "xxlarge": 1440px,
 );
 $breakpoints-hidpi: (
-  hidpi-1: 1,
-  hidpi-1-5: 1.5,
-  hidpi-2: 2,
-  retina: 2,
-  hidpi-3: 3
+  "hidpi-1": 1,
+  "hidpi-1-5": 1.5,
+  "hidpi-2": 2,
+  "retina": 2,
+  "hidpi-3": 3
 );
 $print-breakpoint: large;
-$breakpoint-classes: (small medium large);
+$breakpoint-classes: (
+  small medium large
+);
 
 // 3. The Grid
 // -----------
@@ -148,16 +152,14 @@ $header-color: inherit;
 $header-lineheight: 1.4;
 $header-margin-bottom: 0.5rem;
 $header-styles: (
-  small: (
-    'h1': ('font-size': 40),
+  small: ('h1': ('font-size': 40),
     'h2': ('font-size': 32),
     'h3': ('font-size': 24),
     'h4': ('font-size': 18),
     'h5': ('font-size': 17),
     'h6': ('font-size': 16),
   ),
-  medium: (
-    'h1': ('font-size': 56),
+  medium: ('h1': ('font-size': 56),
     'h2': ('font-size': 48),
     'h3': ('font-size': 40),
     'h4': ('font-size': 32),
@@ -303,7 +305,7 @@ $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
-$button-radius: 400px;
+$button-radius: $global-radius;
 $button-border: 1px solid transparent;
 $button-hollow-border-width: 1px;
 $button-sizes: (
@@ -781,7 +783,9 @@ $slider-radius: $global-radius;
 // ----------
 
 $switch-background: $medium-gray;
+$switch-background-focus: scale-color($switch-background, $lightness: -10%);
 $switch-background-active: $primary-color;
+$switch-background-active-focus: scale-color($switch-background-active, $lightness: -15%);
 $switch-height: 2rem;
 $switch-height-tiny: 1.5rem;
 $switch-height-small: 1.75rem;
@@ -803,15 +807,15 @@ $table-color-scale: 5%;
 $table-border: 1px solid smart-scale($table-background, $table-color-scale);
 $table-padding: rem-calc(8 10 10);
 $table-hover-scale: 2%;
-$table-row-hover: darken($table-background, $table-hover-scale);
-$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale);
+$table-row-hover: color.adjust($table-background, $lightness: -$table-hover-scale);
+$table-row-stripe-hover: color.adjust($table-background, $lightness: -($table-color-scale + $table-hover-scale));
 $table-is-striped: true;
 $table-striped-background: smart-scale($table-background, $table-color-scale);
 $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale * 0.5);
-$table-head-row-hover: darken($table-head-background, $table-hover-scale);
+$table-head-row-hover: color.adjust($table-head-background, $lightness: -$table-hover-scale);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
-$table-foot-row-hover: darken($table-foot-background, $table-hover-scale);
+$table-foot-row-hover: color.adjust($table-foot-background, $lightness: -$table-hover-scale);
 $table-head-font-color: $body-font-color;
 $table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
@@ -879,15 +883,15 @@ $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
-// 56. Xy Grid
+// 57. Xy Grid
 // -----------
 
 $xy-grid: true;
 $grid-container: $global-width;
 $grid-columns: 12;
 $grid-margin-gutters: (
-  small: 20px,
-  medium: 30px
+  "small": 20px,
+  "medium": 30px
 );
 $grid-padding-gutters: $grid-margin-gutters;
 $grid-container-padding: $grid-padding-gutters;
