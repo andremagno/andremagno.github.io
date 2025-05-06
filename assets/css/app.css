@@ -7885,12 +7885,8 @@ html.is-reveal-open body {
   font-weight: 100;
   src: url("../fonts/SF-Pro-Display-Ultralight.otf");
 }
-* {
-  outline: 0 !important;
-}
-
-html {
-  scroll-behavior: smooth;
+*:focus:not(:focus-visible) {
+  outline: none;
 }
 
 @media print, screen and (max-width: 63.99875em) {
