@@ -1,0 +1,120 @@
+---
+layout: home.njk
+permalink: /
+
+section_home_name: 'André Magno'
+section_home_role: 'Product designer'
+section_projects_title: 'Projetos'
+
+work:
+  - titulo: iti Meu negócio
+    pasta: meunegocio
+  - titulo: Vivo Valoriza
+    pasta: vivovaloriza
+
+otherwork:
+  - titulo: Gateway de pagamento
+    pasta: gateway-pagamento
+  - titulo: Dinda Foods
+    pasta: dinda-foods
+  - titulo: Clube Melissa
+    pasta: clube-melissa
+  - titulo: Electrolux Built-in
+    pasta: electrolux
+  - titulo: 'HBO #DesafioGO'
+    pasta: hbo-desafiogo
+  - titulo: Melissa SWAP
+    pasta: melissa-swap
+  - titulo: Netflix Bright Facemask
+    pasta: netflix-bright
+  - titulo: HBO GO Landing Page
+    pasta: hbogolanding
+  - titulo: "TNT Emmy's WebApp"
+    pasta: tnt-emmy
+  - titulo: Quero Quitar
+    pasta: queroquitar
+  - titulo: Ultrahaus
+    pasta: ultrahaus
+  - titulo: Goodyear Corrida para Nascar
+    pasta: goodyear-nascar
+
+section_about_title: 'Sobre'
+
+description: 
+  - 'Olá, sou André, um Product Designer com mais de 10 anos de experiência em empresas como Itaú, Iti, Santander, OLX, HBO, Netflix, Melissa e Centro Universitário Belas Artes.'
+  - 'Como Product Designer, minha responsabilidade é garantir que a experiência do usuário seja agradável e eficiente, alinhando o design às metas e objetivos da empresa para garantir o sucesso do produto.'
+  - 'Trabalho no desenvolvimento end-to-end de produtos digitais, passando pelas etapas de descoberta, pesquisa, ideação, UX, UI, design system, prototipagem, handoff, entrega final, acompanhamento de métricas, entre outras. Utilizo metodologias como pesquisa de usuário, entrevistas, análise competitiva, facilitação de workshops, criação de personas, mapeamento de jornadas do usuário, prototipagem, testes a/b, testes de usabilidade e ferramentas como Figma, Miro, Maze, Hotjar e GA.'
+  - 'Possuo experiência em coordenação, realizando mentorias, 1:1, workshops técnicos e também em contratação, executando a seleção de candidatos, entrevistas e avaliação técnica.'
+
+img: 'about-3.jpg'
+
+links:
+  - name: 'Projetos'
+    url: '#projects'
+    target: ''
+  - name: 'Sobre'
+    url: '#about'
+    target: ''
+  - name: 'LinkedIn'
+    url: 'https://www.linkedin.com/in/andremgno'
+    target: '_blank'
+  - name: 'Email'
+    url: 'mailto:andrmgno@gmail.com'
+    target: '_blank'
+---
+
+<div class="grid-container fluid">
+  <div class="grid-x section__container section__home">
+    <div class="medium-12 cell nav__header">
+      <h1 class="nav__title">{{ section_home_name }}</h1>
+      <div class="nav__subtitle">{{ section_home_role }}</div>
+      <div class="nav__links grid-x">
+        {% for link in links %}
+        <a href="{{ link.url }}" target="{{ link.target }}" class="small-12 medium-shrink cell nav__link">{{ link.name
+          }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="projects" class="grid-container fluid">
+  <div class="section__container section__projects">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-12 cell">
+        <h2 class="section__title">{{ section_projects_title }}</h2>
+      </div>
+
+      {% for item in work %}
+      <div class="medium-6 large-4 cell">
+        <a href="{{ item.pasta }}/" class="project__item">
+          <img src="/assets/img/thumb/{{ item.pasta }}.jpg" alt="{{ item.titulo }}">
+          <div class="project__title">{{ item.titulo }}</div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div id="about" class="grid-container fluid">
+  <div class="section__container section__about">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-12 cell">
+        <h2 class="section__title">{{ section_about_title }}</h2>
+      </div>
+      <div class="medium-7 cell about__content">
+        {% for item in description %}
+        <p class="about__description">
+          {{ item }}
+        </p>
+        {% endfor %}
+      </div>
+      <div class="medium-5 cell about__image">
+        <div class="about__image-container">        
+          <img src="/assets/img/{{ img }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

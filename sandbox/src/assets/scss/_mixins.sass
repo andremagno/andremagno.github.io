@@ -1,0 +1,13 @@
+=breakpoint($query)
+  @if $query == small only
+    @media screen and (max-width: 639px)
+      @content
+  @else if $query == medium down
+    @media screen and (max-width: 1023px)
+      @content
+  @else
+    @media screen and ($query)
+      @content
+
+=align-top
+  align-items: flex-start
