@@ -1,0 +1,95 @@
+---
+
+layout: home
+
+section__home-name: 'André Magno'
+section__home-role: 'Product Designer'
+section__projects-title: 'Projects'
+
+work:
+- titulo: iti My Business
+  pasta: meunegocio
+  link: mybusiness
+- titulo: Vivo Valoriza
+  pasta: vivovaloriza
+  link: vivovaloriza
+
+section__about-title: 'About'
+
+description: 
+- "Hi, I'm André, a Product Designer based in São Paulo, Brazil, with over 10 years of experience at companies like Itaú, Iti, Santander, OLX, HBO, Netflix, Melissa, and Centro Universitário Belas Artes."
+- "As a Product Designer, my responsibility is to ensure the user experience is pleasant and efficient, aligning design with business goals to ensure product success."
+- "I work on end-to-end development of digital products, going through discovery, research, ideation, UX, UI, design system, prototyping, handoff, final delivery, metrics tracking, and more. I use methodologies such as user research, interviews, competitive analysis, workshop facilitation, persona creation, user journey mapping, prototyping, A/B testing, usability testing, and tools like Figma, Miro, Maze, Hotjar, and GA."
+- "I have experience in team coordination, mentoring, 1:1s, technical workshops, and also in hiring — handling candidate screening, interviews, and technical evaluations."
+
+img: 'about-3.jpg'
+
+links:
+- name: 'Projects'
+  url: '#projects'
+  target: ''
+- name: 'About'
+  url: '#about'
+  target: ''
+- name: 'LinkedIn'
+  url: 'https://www.linkedin.com/in/andremgno'
+  target: '_blank'
+- name: 'Email'
+  url: 'mailto:andrmgno@gmail.com'
+  target: '_blank'
+
+---
+
+<div class="grid-container fluid">
+  <div class="grid-x section__container section__home">
+    <div class="medium-12 cell nav__header">
+      <h1 class="nav__title">{{ section__home-name }}</h1>
+      <div class="nav__subtitle">{{ section__home-role }}</div>
+      <div class="nav__links grid-x">
+        {{#each links}}
+        <a href="{{ this.url }}" target="{{ this.target }}" class="small-12 medium-shrink cell nav__link">{{ this.name }}</a>
+        {{/each}}      
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="projects" class="grid-container fluid">
+  <div class="section__container section__projects">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-12 cell">
+        <h2 class="section__title">{{section__projects-title}}</h2>
+      </div>
+      {{#each work}}
+      <a href="/en/{{ this.link }}/" class="medium-6 cell work__link">
+        <div class="work__img-container">
+          <img class="work__img" src="/assets/img/thumb/{{ this.pasta }}.jpg" alt="{{ this.titulo }}">
+        </div>
+        <h3 class="work__title">{{ this.titulo }}</h3>
+      </a>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+<div id="about" class="grid-container fluid">
+  <div class="section__container section__about">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-12 cell">
+        <h2 class="section__title">{{ section__about-title }}</h2>
+      </div>
+      <div class="medium-7 cell about__content">
+        {{#each description}}
+        <p class="about__description">
+          {{this}}
+        </p>
+        {{/each}}
+      </div>
+      <div class="medium-5 cell about__image">
+        <div class="about__image-container">        
+          <img src="/assets/img/{{ img }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
