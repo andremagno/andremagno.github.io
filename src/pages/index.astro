@@ -1,0 +1,72 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
+import { getOutros, getProjetos } from "../lib/colecoes";
+
+const projetos = await getProjetos();
+const outros = await getOutros();
+---
+
+<Base
+  title={site.cargo}
+  description="André Magno, senior product designer in São Paulo. 10 years designing payments, banking, telecom and media products for Itaú, Vivo, OLX and Globo."
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: site.nome,
+    jobTitle: "Senior Product Designer",
+    url: "https://andremagno.github.io/",
+    image: "https://andremagno.github.io/assets/about-portrait.jpg",
+    email: `mailto:${site.email}`,
+    address: { "@type": "PostalAddress", addressLocality: "São Paulo", addressCountry: "BR" },
+    worksFor: { "@type": "Organization", name: "Globo" },
+    sameAs: site.redes.map((rede) => rede.url),
+    knowsAbout: ["Product design", "UX research", "Design systems", "AI in product design", "Fintech", "Marketplaces"],
+  }}
+  footerCta
+>
+  <section class="intro intro--home">
+    <h1 class="headline">
+      <span>{site.nome} ~</span>
+      <span>{site.cargo}</span>
+    </h1>
+    <p class="intro__text">For 10 years I've been designing digital products across payments, banking, telecom and media, turning complex problems into things people trust, for companies like <strong>Itaú ~ Vivo ~ OLX ~ Globo.</strong></p>
+  </section>
+
+  <main class="grid" id="projects" aria-label="Projects">
+    {
+      projetos.map(({ id, data }) => (
+        <article class="project">
+          <a class="project__link" href={`/projects/${id}/`}>
+            <div class="project__media">
+              <img src={data.capa.src} width="1500" height="1000" alt={data.capa.alt} />
+            </div>
+            <h2 class="project__title">
+              <span class="link-line">{data.nome} ~ {data.subtitulo}</span>
+            </h2>
+            <p class="project__meta">{data.categorias}</p>
+          </a>
+        </article>
+      ))
+    }
+  </main>
+
+  <section class="others" aria-labelledby="others-title">
+    <h2 class="others__title" id="others-title">Also worked with</h2>
+    <div class="marquee">
+      {/* The list is rendered twice so the loop can restart without a visible jump */}
+      {
+        [1, 2].map((copia) => (
+          <ul class="marquee__track" aria-hidden={copia === 2 ? "true" : undefined}>
+            {outros.map(({ data }) => (
+              <li>
+                <img src={data.src} width="1500" height="1000" alt={copia === 1 ? data.alt : ""} />
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+    </div>
+  </section>
+
+</Base>

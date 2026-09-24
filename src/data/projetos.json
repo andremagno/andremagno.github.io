@@ -1,0 +1,625 @@
+[
+  {
+    "id": "olx-pay",
+    "nome": "OLX Pay",
+    "subtitulo": "Marketplace payments",
+    "categorias": "Product Design, UX Research, Design System",
+    "resumo": "OLX was where people found a buyer, but the sale still happened on the street, cash in hand. OLX Pay moved the payment into the app, and my work was making the fee, the shipping and the release of the money clear to sellers and buyers who didn't trust paying online.",
+    "cliente": "OLX",
+    "ano": "2020",
+    "papel": "Product Designer",
+    "duracao": "9 months",
+    "capa": {
+      "src": "/assets/olx-pay/cover.svg",
+      "alt": "A laptop on a green background with the OLX shapes on its screen: a purple circle, a green triangle and an orange square"
+    },
+    "blocos": [
+      {
+        "tipo": "lista",
+        "titulo": "In short",
+        "itens": [
+          {
+            "titulo": "Problem",
+            "texto": "A sale on OLX ended outside the app, in a meeting with cash in hand, where scams happened and no one could step in."
+          },
+          {
+            "titulo": "Approach",
+            "texto": "A competitive benchmark, high fidelity prototypes of the buyer and seller flows, and 12 remote moderated sessions combining in-depth interviews with usability tests."
+          },
+          {
+            "titulo": "Outcome",
+            "texto": "OLX holds the buyer's payment until the item arrives, with installment payments by card and Correios shipping built in. 26% of sellers in the launch categories turned it on, and 58% of orders shipped to another state."
+          }
+        ]
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Every sale on OLX ended in a meeting the platform couldn't see",
+        "texto": "OLX connected people selling used items with buyers nearby. Payment happened face to face, product in one hand and cash in the other. Sales stayed inside the seller's city, and fraud left no record. OLX Pay moved payment into the app. The buyer pays by card, in up to 12 installment payments, and OLX holds the money until the buyer confirms the item. The seller pays a percentage fee and ships through Correios, Brazil's postal service."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "My role",
+        "texto": "I designed the OLX Pay flows on both sides: sellers turning it on and shipping, buyers paying and confirming. I scoped with the PM, worked out payment rules with engineering, and co-ran the usability study with OLX's research team, from script and prototypes to synthesis. The squad had a PM, 5 engineers and a product analyst."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The wallet model asked buyers to trust a balance before the sale",
+        "texto": "A benchmark of Mercado Pago, PicPay and Enjoei set two references: escrow on marketplaces, balances on wallets. Our initial flow followed the wallets. I mapped both journeys in 10 stages and prototyped them in Figma: money from a sale landed in an OLX Pay balance, and checkout selected that balance by default. Testing rejected it. A light, wary participant said: \"I didn't like having to put money in an account to buy.\""
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/olx-pay/modelo-carteira.svg",
+        "alt": "The prototype checkout in Portuguese, with the payment method section highlighted in orange: the OLX Pay balance is selected by default and shows R$ 0.00",
+        "legenda": "The prototype checkout, with the balance picked for the buyer."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Trust split the participants more than tech skills did",
+        "texto": "After 4 pilot sessions, we ran 12 remote moderated sessions, each an in-depth interview followed by prototype navigation, with 6 sellers and 6 buyers aged 23 to 58 from 8 states. We sorted participants by how often they used digital wallets and how safe they felt paying online. Heavy, confident users went through by analogy with other wallets; light, wary users stopped at the fee, the delivery setup and the balance. The emotion curves dropped at seller signup, delivery setup and checkout. A post-test survey showed who carried the risk: all 6 sellers said OLX Pay felt safe, against half the buyers."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/olx-pay/perfis.svg",
+        "alt": "A 2 by 2 matrix of wallet use against confidence paying online. Light and confident users stopped at the fee and shipping rules; heavy and confident went through by analogy with other wallets; light and wary stopped at the fee, delivery setup and balance, highlighted in orange; heavy and wary stopped at the release rule and balance",
+        "legenda": "Four profiles, and where each one stopped."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Sellers accept OLX Pay looking at what they will receive",
+        "texto": "Sellers read the fee as a fixed charge and set up delivery on a separate screen, after the listing was live. I rebuilt acceptance as one journey. \"You'll receive\" is the largest number on the screen, with price and fee percentage above it and the price editable in place. Delivery setup joined the same journey: package weight, with the rounding rule next to the field, and a labeled sender address. Escrow and shipping details sit behind \"How it works\"."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/olx-pay/aceite.svg",
+        "alt": "The OLX Pay opt-in screen in Portuguese, with the R$ 1,500 price, the R$ 150 service fee and \"Você vai receber R$ 1.350\" highlighted in orange",
+        "legenda": "Acceptance starts from what the seller keeps."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Checkout asks for a payment method instead of choosing one",
+        "texto": "With the balance preselected, light, wary buyers stopped at checkout to find out where the money would come from. I removed the default. New buyers see \"Choose a payment method\", card on top, and the balance appears only when it has funds. Each installment option shows its interest and total. Delivery compares pickup with the seller, standard and express, each with price and date."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/olx-pay/checkout.svg",
+        "alt": "The checkout on a phone, in Portuguese, with the payment method row highlighted: a Visa card in 3 installments and a link to change the number of installments",
+        "legenda": "The buyer picks the card and the number of installments."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Money is released on a rule both sides can see",
+        "texto": "Most buyers said they would forget to confirm receipt, and sellers didn't know when they would be paid. I turned the order into a status timeline shared by both: paid, shipped, delivered, released. Each step states the rule, so sellers read their release date and buyers read the days left to report a problem. The confirm button sits on the order and pinned in the chat. Without a report, payment is released 7 days after delivery."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/olx-pay/pedido.svg",
+        "alt": "Two phones in Portuguese: the chat with a card confirming the payment and a shortcut to the order details, and the order page with the delivery status bar highlighted",
+        "legenda": "The chat and the order page show where the purchase stands."
+      },
+      {
+        "tipo": "testes",
+        "titulo": "Smaller findings changed the copy and the defaults",
+        "linhas": [
+          {
+            "antes": "OLX Pay was presented as the new way to sell.",
+            "feedback": "Wary users asked whether meeting in person would end.",
+            "depois": "Listings keep the chat next to \"Buy with OLX Pay\"."
+          },
+          {
+            "antes": "Signup asked again for data OLX had.",
+            "feedback": "Participants retyped CPF (Brazil's taxpayer number) and phone, and asked why.",
+            "depois": "Known fields come filled in."
+          },
+          {
+            "antes": "A transaction password appeared unexplained.",
+            "feedback": "Most confused it with their login.",
+            "depois": "The screen says it is used to pay and withdraw."
+          }
+        ]
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The timeline and the price breakdown went into OLX's library",
+        "texto": "An inventory of the 34 screens found most parts already in OLX's shared Figma library, and 11 needed adapting. I created 6 components for what money needed: the price breakdown, a payment method selector with empty, selected and error states, the installment list, the delivery option card, the order timeline and the listing badge. Each used auto layout for app and mobile web, with specs for a declined card or a lost package, handed off in Zeplin. After launch, the library team published the timeline and price breakdown for other squads."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "How a sale works with OLX Pay",
+        "texto": "A seller turns on OLX Pay for a listing, sees what they will receive, and adds package weight and address. The listing gets the OLX Pay badge, with the chat still open for people who prefer to meet. The buyer taps \"Buy with OLX Pay\", picks delivery, a payment method and the number of installment payments. The seller prints the Correios label in the app. Both follow the order timeline until the buyer confirms and the money is released."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "full",
+        "src": "/assets/olx-pay/telas-finais.svg",
+        "alt": "Five phone screens in Portuguese: the listing with the OLX Pay badge, the chat with a buy button, the checkout, the chat confirming payment, and the order details with delivery status",
+        "legenda": "OLX Pay from the listing to the order page."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "What was left for later",
+        "texto": "Buyers asked to pay by boleto (Brazil's bank slip), and sellers asked for free shipping as a sales incentive. Both went to the roadmap."
+      },
+      {
+        "tipo": "lista",
+        "titulo": "How I'd approach this project today",
+        "intro": "AI wasn't part of this process in 2020.",
+        "itens": [
+          {
+            "titulo": "Research synthesis",
+            "texto": "The 12 recordings became profiles through a Miro debrief. I'd transcribe and cluster them with AI, then check the profiles against the survey."
+          },
+          {
+            "titulo": "Functional prototypes",
+            "texto": "The Figma prototypes loaded slowly and couldn't show an order moving over days. With Claude Code I'd build the timeline in code and test the release rule itself."
+          }
+        ]
+      }
+    ],
+    "resultados": [
+      {
+        "valor": "26%",
+        "legenda": "sellers turned it on in launch categories"
+      },
+      {
+        "valor": "58%",
+        "legenda": "orders shipped to another state"
+      },
+      {
+        "valor": "1.4%",
+        "legenda": "orders went to dispute"
+      }
+    ]
+  },
+  {
+    "id": "iti-meu-negocio",
+    "nome": "iti Meu Negócio",
+    "subtitulo": "Business tools for sellers",
+    "categorias": "Product Design, UX Research, Design System",
+    "resumo": "Meu negócio is a new feature inside iti that empowers small business owners to manage sales and charging on their own, putting Itaú into a new customer segment.",
+    "cliente": "Itaú",
+    "ano": "2021",
+    "papel": "Product Designer",
+    "duracao": "9 months",
+    "capa": {
+      "src": "/assets/iti-meu-negocio/cover.svg",
+      "alt": "The Meu negócio home on a phone, the monthly sales card above the charging shortcuts, over iti's dark background"
+    },
+    "blocos": [
+      {
+        "tipo": "lista",
+        "titulo": "In short",
+        "itens": [
+          {
+            "titulo": "Problem",
+            "texto": "iti had no tools for the informal sellers already using it to get paid, and Itaú's own business accounts reached only 300 active users against a market of millions."
+          },
+          {
+            "titulo": "Approach",
+            "texto": "In-depth interviews, a competitive analysis, market sizing, a co-creation workshop with sellers, and moderated usability testing on the MVP."
+          },
+          {
+            "titulo": "Outcome",
+            "texto": "A dedicated business area with sales management, built-in charging and fees stated on every sale. Sign-ups passed 200,000 in six months, with sessions averaging 15 minutes."
+          }
+        ]
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Sellers were already running a business through a personal account",
+        "texto": "\"I started selling on my own and I get everything through Pix,\" one customer said. Another: \"I use iti for everything, including my business.\" The interviews found the same pattern behind both: a wide payment portfolio covered every way to get paid, but personal and business money mixed by habit, and sellers wanted quick advice, not a course on running a business. A competitive analysis found the same price war across every player, and support so slow that less digital sellers gave up on self-service."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/iti-meu-negocio/jornada.svg",
+        "alt": "A seller's typical journey mapped from sourcing to collecting payment, with the friction found at each stage",
+        "legenda": "The same frictions showed up at every stage sellers went through to get paid."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Nineteen million potential sellers set the ambition, two constraints set the scope",
+        "texto": "Sizing Brazil's informal sellers already selling through digital channels put the addressable market at 19 million, against 300 active business accounts. The objective split in two: grow iti's base with MEIs, Brazil's individual microentrepreneur registration, and raise engagement among sellers already inside the app. The main account couldn't be modified, so the area had to live in its own space, shipped alongside a design system still under construction."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "A workshop turned seller habits into a scoped MVP",
+        "texto": "Sellers spent five days mapping their daily journey, what a business area should offer, and how competitors compared, producing four solution groups: the area itself, a charging flow, sales management, and business opportunities. A second workshop turned those into product premises, easy to use, help on hand, look professional, stay in control, and one value proposition: help small sellers grow their business. Prioritizing by value versus effort set sales monitoring, fast receiving and ongoing support as the MVP's must-haves."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/iti-meu-negocio/workshop-negocio.svg",
+        "alt": "The full co-creation workshop board: charging journey, management journey, what customers want, the Meu negócio home requirements and the adquirência discussion, with sticky notes and low fidelity mockups",
+        "legenda": "Sellers mapped their own journey before a single screen was drawn."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The home opens on money already earned, not a menu",
+        "texto": "Onboarding asks for the business's name before rendering the home, so the area reads as the seller's own. The two lead cards follow a clear visual hierarchy, the monthly sales total set larger than open charges, the numbers interviews said sellers check before anything else. A third slot rotates contextual offers, a card reader, a loan, iti's fee-free credit card, based on what that seller already does in the app."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/iti-meu-negocio/home-negocio.svg",
+        "alt": "The Meu negócio home screen with the sales total and open charges cards above the charging shortcuts, on iti's light background",
+        "legenda": "The home leads with what sellers check before anything else: sales and open charges."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Charging methods replaced the workaround sellers had improvised",
+        "texto": "Sellers who charged over Pix had built their own process: a personal key, a screenshot, no record of who had paid. I put Pix by key or QR code, a payment link to send over social media, and tap to pay, which turns the phone into a card reader over NFC, in one row. Each produces a receipt the seller can find again in the sales list."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Every sale states its fee before the money lands",
+        "texto": "Fees had been the one payment complaint interviews raised directly. Each entry in the sales list shows the card brand, the fee percentage and the exact amount landing in the account, with a running fee total for the period. Filters split sales by period, payment method and status, so checking a sale against an order made on Instagram takes one screen."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/iti-meu-negocio/taxa-venda.svg",
+        "alt": "The monthly sales summary card separating what was sold, the fees and what lands in the account, on iti's light background",
+        "legenda": "Fees stated on every sale, not buried in a statement."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "I proposed moving to iti's unreleased design system before drawing final screens",
+        "texto": "Partway into high fidelity, I learned iti was mid-redesign with a new design system still in progress. Shipping on the outgoing kit meant redoing the work soon after launch, so I built a handful of screens in the new system and proposed adopting it early. Design leadership accepted, and Meu Negócio shipped as the earliest area built on it, with the contextual offer card suggested, adapted and documented together with Design Ops rather than pulled ready-made."
+      },
+      {
+        "tipo": "testes",
+        "titulo": "Sellers missed the business area's own entry point",
+        "intro": "I ran a moderated usability test on the MVP prototype.",
+        "linhas": [
+          {
+            "antes": "The entry point sat inside the main navigation with no label.",
+            "feedback": "Participants struggled to find an entrepreneur-focused area.",
+            "depois": "Access moved to its own entry point in the navigation."
+          },
+          {
+            "antes": "The \"Meu negócio\" filter carried no visual weight on the balance screen.",
+            "feedback": "Participants missed it while scanning the balance hierarchy.",
+            "depois": "The filter gained visual weight and moved up."
+          },
+          {
+            "antes": "Payment-link sales had no filter of their own.",
+            "feedback": "Participants couldn't isolate link sales in the payment-method filter.",
+            "depois": "The filter was simplified to surface link sales."
+          }
+        ]
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/iti-meu-negocio/antes-depois.svg",
+        "alt": "The navigation entry point and the payment-method filter, before and after the usability test",
+        "legenda": "Access moved into its own entry point, and the filters that follow it moved with it."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Meu negócio opens on money owed and money in hand",
+        "texto": "Sellers name their business once, during onboarding, and land on a home built around two questions: what came in this month, and who still owes them. From there, Vender starts a Pix charge, a payment link or a tap-to-pay sale in one tap, and every entry in the sales list carries its fee and arrival date next to it. Offers for a card reader, a loan or iti's credit card surface based on how that seller already uses the app, not as a fixed shelf."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "full",
+        "src": "/assets/iti-meu-negocio/telas-finais.svg",
+        "alt": "Final gallery: the Meu negócio home, the charging row, the sales list and a sale's fee detail",
+        "legenda": "Meu negócio as shipped: sales, charges and fees in one area."
+      },
+      {
+        "tipo": "lista",
+        "titulo": "How I'd approach this project today",
+        "itens": [
+          {
+            "titulo": "Research synthesis",
+            "texto": "The interviews and the competitive analysis were read by hand. I'd cluster them with AI and check the patterns against iti's own usage data."
+          },
+          {
+            "titulo": "Testing the entry point",
+            "texto": "It was tested on a static prototype, so the miss rate came from what sellers said, not what they did. With Claude Code I'd build a clickable version of the navigation, so scrolling past the entry point would show up in behavior."
+          }
+        ]
+      }
+    ],
+    "resultados": [
+      {
+        "valor": "200k+",
+        "legenda": "sign-ups in 6 months"
+      },
+      {
+        "valor": "15 min",
+        "legenda": "average time in app"
+      }
+    ]
+  },
+  {
+    "id": "vivo-valoriza",
+    "nome": "Vivo Valoriza",
+    "subtitulo": "Loyalty program",
+    "categorias": "Product Design, UX Research, Design Leadership",
+    "resumo": "Vivo Valoriza is where the customers of Brazil's largest telecom operator find and redeem benefits. The redesign rebuilt it around a reward that arrives every month for more than 50 million accounts.",
+    "cliente": "Vivo",
+    "ano": "2019",
+    "papel": "Product designer, Design Lead",
+    "duracao": "6 months",
+    "capa": {
+      "src": "/assets/vivo-valoriza/cover.svg",
+      "alt": "Two tilted phones on a purple background: the Vivo Valoriza home with the reward of the month, and a benefit detail with the redeem button"
+    },
+    "blocos": [
+      {
+        "tipo": "lista",
+        "titulo": "In short",
+        "itens": [
+          {
+            "titulo": "Problem",
+            "texto": "Rewards took an average of 48 months to reach on miles, and only 18% of customers used the platform."
+          },
+          {
+            "titulo": "Approach",
+            "texto": "A competitive analysis, in-depth interviews across every customer tier, two personas, a co-creation workshop, an information architecture pass, and a usability test on the low fidelity prototype."
+          },
+          {
+            "titulo": "Outcome",
+            "texto": "A monthly redemption cycle with a legible catalogue. Sign-ups rose 13% and platform engagement 9% the year after launch."
+          }
+        ]
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The miles were the barrier, and the catalogue was the second one",
+        "texto": "Vivo Valoriza served more than 50 million accounts. A competitive analysis of Brazilian and international loyalty programs found the same pattern: points systems that took months to pay out, and catalogues customers didn't trust. Interviews with its own customers confirmed it: “I feel let down by benefit programs that never quite match what I need. It leaves me with few options that are relevant.” Customers couldn't tell which benefits their tier allowed, couldn't see what they had redeemed, and dropped offers whose rules they couldn't finish."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/vivo-valoriza/concorrentes.svg",
+        "alt": "A dot grid comparing six loyalty programs across redemption history, points system, points accelerator, save for later and gamification",
+        "legenda": "Every competitor ran the same miles model Vivo Valoriza was trying to leave."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Luíza and Lucas split on the one thing miles rewarded",
+        "texto": "Luíza runs a household and wants a reward that saves time or money that week: cashback, discounts, delivery. Lucas travels often, and miles were the one part of the old program that worked for him. The program had been built for Lucas and asked Luíza to wait years for something she never wanted. A value proposition canvas built from both set the relief the redesign had to deliver: a reward that pays back monthly, not a balance to manage."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/vivo-valoriza/personas.svg",
+        "alt": "Two profile cards, Luíza the busy one and Lucas the traveller, with bars comparing their interest in cashback, discounts, bill credit, tickets and airline miles",
+        "legenda": "Luíza and Lucas, and what each one needed a reward to be."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "A co-creation workshop chose a monthly cycle over a shorter mile",
+        "texto": "One option on the table was cutting the miles requirement, so a balance still existed but emptied faster. It lost to a model with no balance at all: a workshop with product, marketing, CRM and the partner teams produced a design matrix and three program pillars, all pointing at a reward with no accumulation to manage. The program became a monthly cycle: every customer gets one special redemption a month, available immediately, and tier decides how many more they hold beyond that one."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/vivo-valoriza/workshop.jpg",
+        "alt": "A blurred photo of the co-creation workshop, a room of stakeholders working in groups around tables",
+        "legenda": "The workshop that chose a monthly cycle over a shorter mile requirement."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "A sitemap organized by what customers do, not by department",
+        "texto": "The old catalogue was organized by benefit category, the same structure as the partner contracts behind it. I mapped a sitemap around what a customer actually does: choose a reward, use what they already have, keep coupons in a wallet, see their tier. Redemption rules moved from a rules page into the benefit card itself, next to the reward."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/vivo-valoriza/arquitetura.svg",
+        "alt": "Sitemap of the redesigned Vivo Valoriza: a root splitting into choose, use, wallet and profile, each with its own screens underneath",
+        "legenda": "Choose, use, wallet, tier: the sitemap replaced categories with actions."
+      },
+      {
+        "tipo": "testes",
+        "titulo": "The monthly redemption got lost inside the catalogue list",
+        "intro": "I ran a moderated usability test on the low fidelity prototype with customers.",
+        "linhas": [
+          {
+            "antes": "The monthly redemption sat inside the catalogue list, same size as every other offer.",
+            "feedback": "Participants scrolled past it without noticing it was different from a regular reward.",
+            "depois": "It moved to its own card at the top of the home, with the date it resets."
+          },
+          {
+            "antes": "Redemption rules lived on a separate rules screen.",
+            "feedback": "Participants opened and abandoned offers without finding the one rule that mattered.",
+            "depois": "Rules moved onto the benefit card itself, visible before redeeming."
+          }
+        ]
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/vivo-valoriza/prototipo.svg",
+        "alt": "Paper sketches taped to a glass wall next to the grid of low fidelity screens built from them",
+        "legenda": "Paper first, then the low fidelity prototype taken into testing."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The benefit card became a component three teams could reuse",
+        "texto": "An audit of Vivo's UI kit found 4 components that fit the new catalogue without changes. The benefit card was new: a variant for redeemable, redeemed and expired states, documented in Vivo's shared library before handoff to engineering."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The program now runs on one redemption a month, not a balance",
+        "texto": "Every customer opens Vivo Valoriza to one special redemption waiting for the month, ready to use with no balance to check first. Luíza finds it and redeems in one tap; Lucas moves past it into the catalogue, where his tier sets how many more offers he can take. Every benefit card states its rule before he taps to redeem, and what he has already used sits in its own history, recognition over recall instead of a balance to track."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "full",
+        "src": "/assets/vivo-valoriza/telas-finais.png",
+        "alt": "Seven Vivo Valoriza screens on a light purple background: the home with the reward of the month, the benefit catalogue, the redemption list, cashback, a benefit detail, the redemption confirmation and the profile showing the customer tier",
+        "legenda": "Vivo Valoriza as shipped: one redemption a month, and a catalogue built around it."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "What was left for the next release",
+        "texto": "Gamification and benefits personalized from redemption behavior both needed data the monthly cycle had only started to collect, so both went to the next release instead of this one."
+      },
+      {
+        "tipo": "lista",
+        "titulo": "How I'd approach this project today",
+        "intro": "AI wasn't part of this process in 2019.",
+        "itens": [
+          {
+            "titulo": "Research synthesis",
+            "texto": "The interviews and the competitive analysis were grouped by hand. I'd cluster them with AI and check the patterns against the program's own redemption data."
+          },
+          {
+            "titulo": "Testing the monthly card",
+            "texto": "It was tested on a static prototype, so the miss rate came from what participants said, not what they did. With Claude Code I'd build a clickable version, so scrolling past the card would show up in behavior."
+          }
+        ]
+      }
+    ],
+    "resultados": [
+      {
+        "valor": "+13%",
+        "legenda": "sign-ups vs previous year"
+      },
+      {
+        "valor": "+9%",
+        "legenda": "platform engagement"
+      },
+      {
+        "valor": "3",
+        "legenda": "redemptions a month"
+      }
+    ]
+  },
+  {
+    "id": "iti-beneficios",
+    "nome": "iti Benefícios",
+    "subtitulo": "Rewards program",
+    "categorias": "Product Design, UX Research, Design System",
+    "resumo": "Itaú's benefits program was scored by card income tier. The redesign filtered it by what iti's customers actually do, and a third of active customers used it in the first month.",
+    "cliente": "Itaú",
+    "ano": "2022",
+    "papel": "Product Designer",
+    "duracao": "3 months",
+    "capa": {
+      "src": "/assets/iti-beneficios/cover.svg",
+      "alt": "A shopper pushing a cart of benefit cards past phone screens bursting with rewards, over iti's pink background"
+    },
+    "blocos": [
+      {
+        "tipo": "lista",
+        "titulo": "In short",
+        "itens": [
+          {
+            "titulo": "Problem",
+            "texto": "iti had no rewards program of its own, and the benefits framework Itaú already had was scored by card income tier, which doesn't describe iti's customers."
+          },
+          {
+            "titulo": "Approach",
+            "texto": "A discovery study with CX Research, 12 in-depth interviews read against an in-house survey, five iti-specific personas, and a moderated usability test before launch."
+          },
+          {
+            "titulo": "Outcome",
+            "texto": "A cashback-first benefits area with one perk exclusive to iti. 38% of active customers opened it in the first month."
+          }
+        ]
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The money was there, the program just wasn't scored for iti",
+        "texto": "Itaú's benefits program sorted cardholders by account income: IA, IU and Personnalité. iti's customers don't sort that way. An earlier study found they treat digital banks like drawers, moving to whichever paid out. I read 12 interviews from a discovery study I requested with CX Research against an in-house survey: cashback purchases grew 48% during the pandemic, and 74% preferred a benefit inside e-commerce. Points came up as slow and tied to specific partners."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Income tier gave way to what each customer needed from a reward",
+        "texto": "I mapped the interviews onto iti's own personas. Cabreiro (the wary one) and basicão (no frills) wanted no signup step and every rule visible before redeeming. Empolgado (the app hopper) and maximizador (the stacker) wanted offers matched to real spending: streaming, delivery, transport. Those needs, not income tier, became the filter for adapting Itaú's catalogue."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/iti-beneficios/personas.svg",
+        "alt": "Five persona cards on a light pink background: Cabreiro (the wary one), Basicão (no frills), Empolgado (the app hopper), Maximizador (the stacker) and Pejotinha (the micro-entrepreneur), each with the trait that shaped the benefits program",
+        "legenda": "The five personas that replaced income tier as the filter."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "Cashback moved above the catalogue, and one perk stayed only for iti",
+        "texto": "Adapting Itaú's catalogue scored highest on effort against building a new program from scratch: partners, rules and redemption flow already existed. Cashback sits above the catalogue, the only number at that size on the screen. A catalogue mirroring Itaú's wouldn't touch the drawer habit research found, so one perk stays only for iti account holders: 15% cashback on streaming, empolgado and maximizador's top category."
+      },
+      {
+        "tipo": "testes",
+        "titulo": "The exclusive badge was easy to miss on a shelf of similar cards",
+        "intro": "I ran a moderated usability test with 6 customers across iti's personas.",
+        "linhas": [
+          {
+            "antes": "The exclusive badge sat inside the benefit card, same size as the partner tag.",
+            "feedback": "Four of six participants scrolled past the iti-exclusive offer without noticing it.",
+            "depois": "The badge moved above the card, in the accent color reserved for it alone."
+          },
+          {
+            "antes": "Exclusive and adapted offers sat in one mixed list.",
+            "feedback": "Participants compared prices before checking which offers were exclusive.",
+            "depois": "Exclusive offers now open the list, adapted offers follow."
+          }
+        ]
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The exclusive badge became a component, not a one-off card",
+        "texto": "An audit of the catalogue's 14 benefit cards found 11 components already in Itaú's shared library. The exclusive badge was new: a component variant in its own accent color, with a highlighted card state for the streaming perk, documented in the library before handoff."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "The benefits area opens on cashback, not a catalogue",
+        "texto": "Opening the benefits area shows cashback earned that month, with no enrollment step. The exclusive offer opens the list below it, in the accent color reserved for it, followed by the adapted catalogue sorted by spending category. Every offer states its rule in one line before the customer taps to redeem, and a redeemed cashback offer lands in the balance the same day."
+      },
+      {
+        "tipo": "imagem",
+        "largura": "coluna",
+        "src": "/assets/iti-beneficios/telas-finais.svg",
+        "alt": "Three real screens from the benefits area: the catalogue home with its featured banner, the partner list with each discount, and a partner detail page with an exclusive coupon",
+        "legenda": "The benefits area as shipped."
+      },
+      {
+        "tipo": "texto",
+        "titulo": "What was left for the next release",
+        "texto": "Pejotinha, who runs a small side business, needed a way to separate business and personal spending inside the rewards program. That is scoped for the next release, alongside a second exclusive perk for delivery."
+      },
+      {
+        "tipo": "lista",
+        "titulo": "How I'd approach this project today",
+        "intro": "AI wasn't part of this process in 2022.",
+        "itens": [
+          {
+            "titulo": "Research synthesis",
+            "texto": "The interviews and the survey were read by hand. I'd cluster the transcripts with AI and check the patterns against iti's own usage data."
+          },
+          {
+            "titulo": "Testing the badge",
+            "texto": "It was tested on a static prototype, so the miss rate came from what people said, not what they did. With Claude Code I'd build a clickable version, so scrolling past the badge would show up in behavior."
+          }
+        ]
+      }
+    ],
+    "resultados": [
+      {
+        "valor": "38%",
+        "legenda": "opened the benefits area"
+      },
+      {
+        "valor": "19%",
+        "legenda": "redeemed a cashback offer"
+      },
+      {
+        "valor": "+11%",
+        "legenda": "app opens after redeeming"
+      }
+    ]
+  }
+]

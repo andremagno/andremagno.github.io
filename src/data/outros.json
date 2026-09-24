@@ -1,0 +1,67 @@
+[
+  {
+    "id": "dinda",
+    "src": "/assets/outros/dinda.svg",
+    "alt": "Dinda logo over an illustrated interface"
+  },
+  {
+    "id": "vivo",
+    "src": "/assets/outros/vivo.svg",
+    "alt": "Vivo logo over an illustrated interface"
+  },
+  {
+    "id": "itau",
+    "src": "/assets/outros/itau.svg",
+    "alt": "Itaú logo over an illustrated interface"
+  },
+  {
+    "id": "globo",
+    "src": "/assets/outros/globo.svg",
+    "alt": "Globo logo over an illustrated interface"
+  },
+  {
+    "id": "netflix",
+    "src": "/assets/outros/netflix.svg",
+    "alt": "Netflix logo over an illustrated interface"
+  },
+  {
+    "id": "electrolux",
+    "src": "/assets/outros/electrolux.svg",
+    "alt": "Electrolux logo over an illustrated interface"
+  },
+  {
+    "id": "melissa",
+    "src": "/assets/outros/melissa.svg",
+    "alt": "Clube Melissa logo over an illustrated interface"
+  },
+  {
+    "id": "goodyear",
+    "src": "/assets/outros/goodyear.svg",
+    "alt": "Goodyear logo over an illustrated interface"
+  },
+  {
+    "id": "santander",
+    "src": "/assets/outros/santander.svg",
+    "alt": "Santander logo over an illustrated interface"
+  },
+  {
+    "id": "bhub",
+    "src": "/assets/outros/bhub.svg",
+    "alt": "BHub logo over an illustrated interface"
+  },
+  {
+    "id": "belas-artes",
+    "src": "/assets/outros/belas-artes.svg",
+    "alt": "Belas Artes logo over an illustrated interface"
+  },
+  {
+    "id": "quero-quitar",
+    "src": "/assets/outros/quero-quitar.svg",
+    "alt": "QueroQuitar logo over an illustrated interface"
+  },
+  {
+    "id": "hbo",
+    "src": "/assets/outros/hbo.svg",
+    "alt": "HBO logo over an illustrated interface"
+  }
+]

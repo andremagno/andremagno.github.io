@@ -1,0 +1,1021 @@
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --color-bone: #f8f8f8;
+  --color-carbon: #000000;
+  --color-stone: #d8d8d8;
+
+  /* Typography */
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+
+  --text-caption: 16px;
+  --text-body: 18px;
+  --text-lead: 20px;
+  --text-lead-mobile: 18px;
+  --text-subheading: 24px;
+  --text-title: 32px;
+  --text-display: 50px;
+
+  --leading-display: 0.92;
+  --leading-title: 1.1;
+  --leading-subheading: 1.11;
+  --leading-body: 1.25;
+  --leading-text: 1.33;
+
+  /* Spacing scale — every margin, padding and gap uses one of these */
+  --space-5: 5px;
+  --space-10: 10px;
+  --space-20: 20px;
+  --space-30: 30px;
+  --space-40: 40px;
+  --space-60: 60px;
+  --space-80: 80px;
+  --space-120: 120px;
+  --space-160: 160px;
+
+  /* Layout */
+  --gutter: 20px;
+  --reading-width: clamp(560px, 53vw, 920px); /* ~760px at 1440, grows with the screen */
+  --hero-offset: 140px;            /* 120px of clear space between the header and the hero headline */
+  --hero-offset-after-back: 58px;  /* same headline position when a "← Back" link sits above the hero */
+  --thumb-height: clamp(160px, 18vw, 280px);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--space-80);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--color-bone);
+  color: var(--color-carbon);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  letter-spacing: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, p, ul {
+  margin: 0;
+  padding: 0;
+  font-weight: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus-visible {
+  outline: none;
+}
+
+/* Underline that draws in from the left and retracts to the right */
+.link-line {
+  position: relative;
+  display: inline-block;
+}
+
+.link-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 500ms cubic-bezier(0.38, 0.32, 0.36, 0.98);
+}
+
+a.link-line:hover::before,
+a.link-line:focus-visible::before,
+.project__link:hover .link-line::before,
+.project__link:focus-visible .link-line::before,
+.case-next:hover .link-line::before,
+.case-next:focus-visible .link-line::before,
+.nav__brand:hover .link-line::before,
+.nav__brand:focus-visible .link-line::before,
+.nav__menu a[aria-current="page"]::before {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.page {
+  width: 100%;
+  padding-inline: max(var(--gutter), env(safe-area-inset-left, 0px)) max(var(--gutter), env(safe-area-inset-right, 0px));
+  padding-block: var(--space-20) var(--space-120);
+}
+
+/* ==========================================================================
+   Header — sticky, name (400) left, section links (300) right
+   The 20px padding above/below is cancelled by negative margins, so nothing below moves.
+   ========================================================================== */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-10) var(--space-30);
+  margin: calc(-1 * var(--space-20)) calc(-1 * var(--gutter)) calc(-1 * var(--space-20));
+  padding: var(--space-20) var(--gutter);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-10) var(--space-30);
+}
+
+.nav__brand {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav__menu a {
+  font-weight: var(--font-weight-light);
+}
+
+.nav__toggle {
+  display: none;
+}
+
+.nav__toggle:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 6px;
+}
+
+/* Progressive blur behind the header: 160px tall (64px header + 96px fade).
+   Each layer adds more blur but covers less height, so the blur eases out instead of ending in a line. */
+.nav__backdrop {
+  position: absolute;
+  inset: 0 0 -96px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.nav__backdrop span,
+.nav__backdrop::after {
+  position: absolute;
+  inset: 0;
+}
+
+.nav__backdrop span:nth-child(1) {
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+}
+
+.nav__backdrop span:nth-child(2) {
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 88%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 42%, transparent 88%);
+}
+
+.nav__backdrop span:nth-child(3) {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 76%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 76%);
+}
+
+.nav__backdrop span:nth-child(4) {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 64%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 38%, transparent 64%);
+}
+
+.nav__backdrop span:nth-child(5) {
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 34%, transparent 52%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 34%, transparent 52%);
+}
+
+/* Bone tint on top of the blur, eased out with many stops so there is no visible band */
+.nav__backdrop::after {
+  content: "";
+  background: linear-gradient(
+    to bottom,
+    rgba(248, 248, 248, 0.82) 0%,
+    rgba(248, 248, 248, 0.68) 30%,
+    rgba(248, 248, 248, 0.45) 45%,
+    rgba(248, 248, 248, 0.24) 60%,
+    rgba(248, 248, 248, 0.1) 75%,
+    rgba(248, 248, 248, 0.03) 88%,
+    rgba(248, 248, 248, 0) 100%
+  );
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .nav__backdrop::after {
+    background: linear-gradient(
+      to bottom,
+      rgba(248, 248, 248, 0.96) 0%,
+      rgba(248, 248, 248, 0.9) 40%,
+      rgba(248, 248, 248, 0.4) 65%,
+      rgba(248, 248, 248, 0) 100%
+    );
+  }
+}
+
+/* ==========================================================================
+   Hero — headline left, paragraph right; top edge 240px from the page top
+   ========================================================================== */
+
+.intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-20);
+  align-items: start;
+  margin-top: var(--hero-offset);
+}
+
+.headline {
+  margin-bottom: var(--space-20);
+  font-size: clamp(32px, 3.4vw, var(--text-display));
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-display);
+}
+
+.headline span {
+  display: block;
+}
+
+.intro__text {
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-text);
+}
+
+.intro__text strong {
+  font-weight: var(--font-weight-regular);
+}
+
+/* Home hero: headline and intro stacked, as on phones. The intro keeps the
+   width of the old right column, so its line breaks don't change */
+.intro--home {
+  grid-template-columns: 1fr;
+  gap: var(--space-10);
+  margin-top: var(--hero-offset);
+}
+
+/* Same whitespace below the hero as above it */
+.intro--home + .grid {
+  margin-top: var(--space-120);
+}
+
+.intro--home .intro__text {
+  max-width: calc((100% - var(--space-20)) / 2);
+}
+
+/* ==========================================================================
+   Home — project grid (two equal columns, 3:2 thumbnails)
+   ========================================================================== */
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-80) var(--space-20);
+  align-items: start;
+  margin-top: var(--space-80);
+}
+
+.project__link {
+  display: block;
+}
+
+/* Slow zoom inside a fixed frame on hover */
+.project__media {
+  overflow: hidden;
+  margin-bottom: var(--space-20);
+  background: var(--color-stone);
+}
+
+.project__media img {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 800ms ease-out;
+}
+
+.project__link:hover .project__media img,
+.project__link:focus-visible .project__media img,
+.case-next:hover .project__media img,
+.case-next:focus-visible .project__media img {
+  transform: scale(1.08);
+}
+
+.project__title {
+  font-size: var(--text-subheading);
+  line-height: var(--leading-subheading);
+}
+
+.project__meta {
+  margin-top: var(--space-5);
+  font-size: var(--text-caption);
+  line-height: var(--leading-text);
+}
+
+/* Also worked with — endless edge-to-edge logo thumbnail marquee */
+.others {
+  margin-top: var(--space-120);
+}
+
+.others__title {
+  margin-bottom: var(--space-30);
+  font-size: var(--text-subheading);
+  line-height: var(--leading-subheading);
+}
+
+.marquee {
+  --marquee-gap: var(--space-20);
+  display: flex;
+  gap: var(--marquee-gap);
+  margin-inline: calc(-1 * var(--gutter));
+  overflow: hidden;
+}
+
+.marquee__track {
+  display: flex;
+  flex-shrink: 0;
+  gap: var(--marquee-gap);
+  animation: marquee 60s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__track img {
+  width: auto;
+  height: var(--thumb-height);
+  aspect-ratio: 3 / 2;
+  background: var(--color-stone);
+}
+
+/* Each track is one full set; shifting by its width plus one gap loops seamlessly */
+@keyframes marquee {
+  to {
+    transform: translateX(calc(-100% - var(--marquee-gap)));
+  }
+}
+
+/* Footer (home only) — centered call to talk and oversized email */
+.footer {
+  padding-top: var(--space-120);
+}
+
+.footer__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-20);
+  text-align: center;
+}
+
+.footer__prompt {
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-body);
+}
+
+.footer__prompt span {
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+}
+
+/* "LinkedIn ~ Email" in one large line; the tilde takes the same size */
+.footer__links {
+  font-size: clamp(28px, 5vw, var(--text-display));
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-body);
+}
+
+.footer__link::before {
+  height: 2px;
+}
+
+/* ==========================================================================
+   Section titles — one style for case study blocks and About sections
+   ========================================================================== */
+
+.case-block__title,
+.about-section__title {
+  margin-bottom: var(--space-20);
+  font-size: var(--text-title);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-title);
+}
+
+/* ==========================================================================
+   Case study
+   ========================================================================== */
+
+/* "← Back" sits between the header and the hero; the hero still starts 240px from the top */
+.case-back {
+  margin-top: var(--space-60);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.case-back + .intro {
+  margin-top: var(--hero-offset-after-back);
+}
+
+.case-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-20);
+  margin: var(--space-60) 0 0;
+}
+
+.case-meta dt {
+  margin-bottom: var(--space-5);
+  font-size: var(--text-caption);
+  line-height: var(--leading-text);
+}
+
+.case-meta dd {
+  margin: 0;
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-body);
+}
+
+.case-cover {
+  margin: var(--space-80) 0 0;
+}
+
+.case-block {
+  margin-top: var(--space-120);
+}
+
+.case-block__text {
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-text);
+}
+
+/* List block — titled items (pain points, role, trade-offs, features, learnings) */
+.case-list__items,
+.case-tests__rows {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-block__text + .case-list__items,
+.case-block__text + .case-tests__rows {
+  margin-top: var(--space-30);
+}
+
+.case-list__items {
+  gap: var(--space-30);
+}
+
+.case-list__item dt {
+  margin-bottom: var(--space-5);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+.case-list__item dd {
+  margin: 0;
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-text);
+}
+
+/* Tests block — before / what we heard / after, one row per finding */
+.case-tests__rows {
+  gap: var(--space-40);
+}
+
+.case-tests__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-20);
+}
+
+.case-tests__label {
+  margin-bottom: var(--space-5);
+  font-size: var(--text-caption);
+  line-height: var(--leading-text);
+}
+
+.case-tests__text {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-text);
+}
+
+/* Image styles: "full" spans the page, "coluna" matches the reading column */
+.case-image {
+  margin: var(--space-120) 0 0;
+}
+
+.case-image figcaption {
+  margin-top: var(--space-10);
+  font-size: var(--text-caption);
+  line-height: var(--leading-text);
+}
+
+.case-results {
+  margin-top: var(--space-120);
+}
+
+.case-results .case-block__title {
+  margin-bottom: var(--space-30);
+}
+
+.case-results__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-20);
+  margin: 0;
+}
+
+.case-results__item {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: var(--space-5);
+}
+
+.case-results__item dd {
+  margin: 0;
+  font-size: var(--text-display);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-display);
+}
+
+.case-results__item dt {
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
+
+/* Next project — a quiet row in the reading column, thumbnail sized like the marquee */
+.case-next {
+  display: flex;
+  align-items: center;
+  gap: var(--space-30);
+  margin-top: var(--space-160);
+}
+
+.case-next .project__media {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+
+.case-next .project__media img {
+  width: auto;
+  height: var(--thumb-height);
+}
+
+.case-next__label {
+  margin-bottom: var(--space-10);
+  font-size: var(--text-caption);
+  line-height: var(--leading-text);
+}
+
+.case-next__title {
+  font-size: var(--text-subheading);
+  line-height: var(--leading-subheading);
+}
+
+.case-next__meta {
+  margin-top: var(--space-5);
+  font-size: var(--text-caption);
+  line-height: var(--leading-text);
+}
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+
+.about-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-20);
+  align-items: center;
+  margin-top: var(--space-80);
+}
+
+/* The portrait, with the text centered vertically beside it */
+.about-row__photo {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: 60% 55%;
+  background: var(--color-stone);
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  font-size: var(--text-lead);
+  font-weight: var(--font-weight-light);
+  line-height: var(--leading-text);
+}
+
+.about__links {
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-body);
+}
+
+.about-section {
+  margin-top: var(--space-120);
+}
+
+.about-columns {
+  display: grid;
+  gap: var(--space-20);
+}
+
+/* Horizontal photo strip: swipe/scroll sideways, snaps to each photo */
+.about-strip {
+  display: flex;
+  gap: var(--space-20);
+  margin: var(--space-60) calc(-1 * var(--gutter)) 0;
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+
+.about-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.about-strip img {
+  flex-shrink: 0;
+  width: auto;
+  height: clamp(260px, 30vw, 440px);
+  background: var(--color-stone);
+  scroll-snap-align: start;
+}
+
+/* ==========================================================================
+   Reading column — text below the hero sits in a centered 760px column.
+   Full-width images and the About photo strip stay edge to edge.
+   ========================================================================== */
+
+.case-block,
+.case-results,
+.case-image--coluna,
+.case-next,
+.about-section__title,
+.about-columns {
+  max-width: var(--reading-width);
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   Page transitions — the old page fades out while the new one fades in.
+   The header has its own name, so it stays put between pages.
+   Browsers without cross-document view transitions just navigate normally.
+   ========================================================================== */
+
+@view-transition {
+  navigation: auto;
+}
+
+.nav {
+  view-transition-name: site-header;
+}
+
+::view-transition-old(root) {
+  animation: 250ms cubic-bezier(0.4, 0, 1, 1) both page-out;
+}
+
+::view-transition-new(root) {
+  animation: 400ms cubic-bezier(0, 0, 0.2, 1) 100ms both page-in;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   Entrance — content fades in on load
+   ========================================================================== */
+
+.headline,
+.intro__text,
+.grid,
+.case-meta,
+.case-cover {
+  animation: fade-in 1600ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+.headline { animation-delay: 150ms; }
+.intro__text { animation-delay: 300ms; }
+.grid,
+.case-meta { animation-delay: 450ms; }
+.case-cover { animation-delay: 600ms; }
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   Tablet
+   ========================================================================== */
+
+@media (max-width: 860px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+    margin-top: var(--space-120);
+  }
+
+  .intro--home .intro__text {
+    max-width: none;
+  }
+
+  .case-back {
+    margin-top: var(--space-80);
+  }
+
+  .case-back + .intro {
+    margin-top: var(--space-30);
+  }
+
+  .case-meta {
+    grid-template-columns: 1fr 1fr;
+    row-gap: var(--space-30);
+  }
+
+  .case-block,
+  .case-results,
+  .case-image {
+    margin-top: var(--space-80);
+  }
+
+  .case-next {
+    margin-top: var(--space-120);
+  }
+
+  .about-row {
+    grid-template-columns: 1fr;
+  }
+
+  .about-row__photo {
+    aspect-ratio: 3 / 2;
+  }
+
+  .about-section {
+    margin-top: var(--space-120);
+  }
+}
+
+/* ==========================================================================
+   Phone
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  /* The question fits one line and "~ Let's talk." takes the second */
+  .footer__prompt {
+    font-size: clamp(16px, 5vw, var(--text-subheading));
+  }
+
+  .footer__prompt span {
+    display: block;
+  }
+
+  /* "LinkedIn ~ Email ~ WhatsApp" stays on one line */
+  .footer__links {
+    font-size: clamp(16px, 5.8vw, 28px);
+  }
+
+
+  .page {
+    padding-block: var(--space-20) var(--space-80);
+  }
+
+  .intro {
+    margin-top: var(--space-60);
+  }
+
+  .headline {
+    font-size: clamp(34px, 9vw, 40px);
+  }
+
+  .intro__text,
+  .case-meta dd,
+  .case-block__text,
+  .case-list__item dd,
+  .about__text {
+    font-size: var(--text-lead-mobile);
+  }
+
+  .case-tests__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-60);
+    margin-top: var(--space-60);
+  }
+
+  .project__title {
+    font-size: var(--text-lead);
+  }
+
+  .case-back {
+    margin-top: var(--space-40);
+  }
+
+  .case-back + .intro {
+    margin-top: var(--space-20);
+  }
+
+  .case-results__list {
+    grid-template-columns: 1fr;
+    gap: var(--space-30);
+  }
+
+  .case-results__item dd {
+    font-size: 40px;
+  }
+
+  .case-next {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-20);
+  }
+
+  /* Header: name + hamburger; links move into a full-screen menu */
+  .nav {
+    z-index: 50;
+  }
+
+  .nav__brand {
+    position: relative;
+    z-index: 2;
+  }
+
+  .nav__toggle {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .nav__toggle-line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transition: transform 300ms cubic-bezier(0.76, 0, 0.24, 1);
+  }
+
+  .nav.is-open .nav__toggle-line:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .nav.is-open .nav__toggle-line:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
+  .nav__menu {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-20) max(var(--gutter), env(safe-area-inset-right, 0px)) calc(var(--space-60) + env(safe-area-inset-bottom, 0px)) max(var(--gutter), env(safe-area-inset-left, 0px));
+    background: var(--color-carbon);
+    color: var(--color-bone);
+    opacity: 0;
+    visibility: hidden;
+    /* Closing: stay visible until the fade-out ends, then hide */
+    transition: opacity 300ms ease, visibility 0s linear 300ms;
+  }
+
+  .nav.is-open .nav__menu {
+    opacity: 1;
+    visibility: visible;
+    /* Opening: visible immediately so the first link can receive focus right away */
+    transition: opacity 300ms ease, visibility 0s linear 0s;
+  }
+
+  /* Open menu is dark: name and close button turn light with it */
+  .nav.is-open .nav__brand,
+  .nav.is-open .nav__toggle {
+    color: var(--color-bone);
+  }
+
+  .nav__menu ul {
+    flex-direction: column;
+    gap: var(--space-10);
+  }
+
+  .nav__menu a {
+    font-size: var(--text-display);
+    line-height: var(--leading-title);
+  }
+
+  .menu-open {
+    overflow: hidden;
+  }
+}
+
+/* ==========================================================================
+   Reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
+
+  .headline,
+  .intro__text,
+  .grid,
+  .case-meta,
+  .case-cover {
+    animation: none;
+  }
+
+  .marquee {
+    overflow-x: auto;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+}

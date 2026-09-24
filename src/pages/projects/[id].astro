@@ -1,0 +1,131 @@
+---
+// TEMPLATE DAS PÁGINAS INTERNAS
+// Gera uma página para cada item de src/data/projetos.json, em /projects/<id>/.
+// Mude o layout aqui e todas as páginas de projeto mudam juntas.
+import type { CollectionEntry } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import { getProjetos } from "../../lib/colecoes";
+
+export async function getStaticPaths() {
+  const projetos = await getProjetos();
+  return projetos.map((projeto, indice) => ({
+    params: { id: projeto.id },
+    props: { projeto, proximo: projetos[(indice + 1) % projetos.length] },
+  }));
+}
+
+interface Props {
+  projeto: CollectionEntry<"projetos">;
+  proximo: CollectionEntry<"projetos">;
+}
+
+const { projeto, proximo } = Astro.props;
+const p = projeto.data;
+---
+
+<Base title={p.nome} description={p.resumo} image={`/og/${projeto.id}.jpg`} type="article">
+  <main class="case">
+    <a class="case-back link-line" href="/">← Back</a>
+
+    <section class="intro">
+      <h1 class="headline">
+        <span>{p.nome} ~</span>
+        <span>{p.subtitulo}</span>
+      </h1>
+      <p class="intro__text">{p.resumo}</p>
+    </section>
+
+    <dl class="case-meta">
+      <div><dt>Client</dt><dd>{p.cliente}</dd></div>
+      <div><dt>Year</dt><dd>{p.ano}</dd></div>
+      <div><dt>Role</dt><dd>{p.papel}</dd></div>
+      <div><dt>Duration</dt><dd>{p.duracao}</dd></div>
+    </dl>
+
+    <figure class="case-cover">
+      <img src={p.capa.src} width="1500" height="1000" alt={p.capa.alt} />
+    </figure>
+
+    {/* Content blocks, in the order they appear in the data file */}
+    {
+      p.blocos.map((bloco) =>
+        bloco.tipo === "texto" ? (
+          <section class="case-block">
+            <h2 class="case-block__title">{bloco.titulo}</h2>
+            <p class="case-block__text">{bloco.texto}</p>
+          </section>
+        ) : bloco.tipo === "lista" ? (
+          <section class="case-block case-list">
+            <h2 class="case-block__title">{bloco.titulo}</h2>
+            {bloco.intro && <p class="case-block__text">{bloco.intro}</p>}
+            <dl class="case-list__items">
+              {bloco.itens.map((item) => (
+                <div class="case-list__item">
+                  <dt>{item.titulo}</dt>
+                  <dd>{item.texto}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        ) : bloco.tipo === "testes" ? (
+          <section class="case-block case-tests">
+            <h2 class="case-block__title">{bloco.titulo}</h2>
+            {bloco.intro && <p class="case-block__text">{bloco.intro}</p>}
+            <ol class="case-tests__rows">
+              {bloco.linhas.map((linha) => (
+                <li class="case-tests__row">
+                  <div>
+                    <p class="case-tests__label">Before</p>
+                    <p class="case-tests__text">{linha.antes}</p>
+                  </div>
+                  <div>
+                    <p class="case-tests__label">What we heard</p>
+                    <p class="case-tests__text">{linha.feedback}</p>
+                  </div>
+                  <div>
+                    <p class="case-tests__label">After</p>
+                    <p class="case-tests__text">{linha.depois}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+        ) : (
+          <figure class={`case-image case-image--${bloco.largura}`}>
+            <img src={bloco.src} width="1500" height="1000" alt={bloco.alt} />
+            {bloco.legenda && <figcaption>{bloco.legenda}</figcaption>}
+          </figure>
+        ),
+      )
+    }
+
+    {
+      p.resultados.length > 0 && (
+        <section class="case-results">
+          <h2 class="case-block__title">Results</h2>
+          <dl class="case-results__list">
+            {p.resultados.map((resultado) => (
+              <div class="case-results__item">
+                <dt>{resultado.legenda}</dt>
+                <dd>{resultado.valor}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )
+    }
+  </main>
+
+  <a class="case-next" href={`/projects/${proximo.id}/`}>
+    <div class="project__media">
+      <img src={proximo.data.capa.src} width="1500" height="1000" alt="" />
+    </div>
+    <div class="case-next__text">
+      <p class="case-next__label">Next project</p>
+      <p class="case-next__title">
+        <span class="link-line">{proximo.data.nome} ~ {proximo.data.subtitulo}</span>
+      </p>
+      <p class="case-next__meta">{proximo.data.categorias}</p>
+    </div>
+  </a>
+</Base>

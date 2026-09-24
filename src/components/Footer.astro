@@ -1,0 +1,36 @@
+---
+import site from "../data/site.json";
+
+interface Props {
+  /** Show the "Let's talk" call with large LinkedIn ~ Email ~ WhatsApp links — home and About only */
+  cta?: boolean;
+}
+
+const { cta = false } = Astro.props;
+const linkedin = site.redes.find((rede) => rede.nome === "LinkedIn");
+---
+
+{
+  cta && (
+    <footer class="footer" id="contact">
+      <div class="footer__cta">
+        <p class="footer__prompt">Looking for a product designer? <span>~ Let's talk.</span></p>
+        <p class="footer__links">
+          {linkedin && (
+            <a class="footer__link link-line" href={linkedin.url} target="_blank" rel="me noopener">
+              LinkedIn
+            </a>
+          )}
+          {" ~ "}
+          <a class="footer__link link-line" href={`mailto:${site.email}`}>
+            Email
+          </a>
+          {" ~ "}
+          <a class="footer__link link-line" href={site.whatsapp} target="_blank" rel="noopener">
+            WhatsApp
+          </a>
+        </p>
+      </div>
+    </footer>
+  )
+}

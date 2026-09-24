@@ -1,0 +1,70 @@
+---
+import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
+import site from "../data/site.json";
+import "../styles/global.css";
+
+interface Props {
+  /** Page name only; the document title is always "André Magno ~ [page]" */
+  title: string;
+  description: string;
+  /** Show "Let's talk" + LinkedIn ~ Email in the footer — home and About only */
+  footerCta?: boolean;
+  /** Share image for links (1200 x 630, in public/og/) */
+  image?: string;
+  /** "article" for case studies, "website" otherwise */
+  type?: "website" | "article";
+  /** Structured data for search engines, rendered as JSON-LD */
+  schema?: Record<string, unknown>;
+}
+
+const { title: pagina, description, footerCta = false, image = "/og/home.jpg", type = "website", schema } = Astro.props;
+const title = `${site.nome} ~ ${pagina}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imagem = new URL(image, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.nome} />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={site.nome} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imagem} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imagem} />
+    <meta name="theme-color" content="#f8f8f8" />
+    <!-- Google Search Console ownership -->
+    <meta name="google-site-verification" content="y1ZJFxrO7KjZ0PALtUtKcutSqmuMoXdEcJDQ2xmiCJc" />
+    {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="page">
+      <Nav />
+      <slot />
+      <Footer cta={footerCta} />
+    </div>
+    <!-- Cloudflare Web Analytics: cookieless visit stats (no consent banner needed) -->
+    <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "e8caa6543b08490d901f60675c1431c6"}'></script>
+  </body>
+</html>

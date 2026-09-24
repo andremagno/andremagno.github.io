@@ -1,0 +1,85 @@
+---
+import site from "../data/site.json";
+
+// A menu item is "current" when its URL is a page path (not a /#section anchor) matching this page
+const semBarraFinal = (caminho: string) => caminho.replace(/\/+$/, "") || "/";
+const caminho = semBarraFinal(Astro.url.pathname);
+const atual = (url: string) => !url.includes("#") && caminho === semBarraFinal(url);
+// About has its own contact footer, so "Contact" scrolls down there; everywhere else it goes to the home footer
+const destino = (url: string) => (url === "/#contact" && caminho === "/about" ? "#contact" : url);
+---
+
+<header class="nav">
+  <!-- Progressive blur: stacked layers with growing blur and shrinking masks, plus a fading tint -->
+  <div class="nav__backdrop" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <a class="nav__brand" href="/">
+    <span class="nav__name link-line">{site.nome}</span>&nbsp;~
+  </a>
+
+  <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+    <span class="nav__toggle-line"></span>
+    <span class="nav__toggle-line"></span>
+  </button>
+
+  <nav class="nav__menu" id="nav-menu" aria-label="Main">
+    <ul>
+      {
+        site.menu.map((item) => (
+          <li>
+            <a class="link-line" href={destino(item.url)} aria-current={atual(item.url) ? "page" : undefined}>
+              {item.nome}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  // A header link to the page you're already on scrolls back to the top instead of reloading,
+  // so the page transition doesn't play and the page doesn't blink
+  document.querySelectorAll<HTMLAnchorElement>(".nav a[href]").forEach((link) => {
+    link.addEventListener("click", (event) => {
+      const destino = new URL(link.href);
+      const mesmaPagina = destino.pathname.replace(/\/+$/, "") === location.pathname.replace(/\/+$/, "");
+      if (!mesmaPagina || destino.hash) return;
+      event.preventDefault();
+      window.scrollTo({ top: 0 });
+    });
+  });
+
+  // Phone menu: toggle button opens a full-screen list of section links
+  const header = document.querySelector<HTMLElement>(".nav");
+  const toggle = header?.querySelector<HTMLButtonElement>(".nav__toggle");
+
+  if (header && toggle) {
+    // Everything on the page except the header becomes inert while the menu is open,
+    // so Tab and screen readers stay inside the menu
+    const outsideHeader = () => document.querySelectorAll<HTMLElement>(".page > :not(.nav)");
+
+    const setOpen = (open: boolean, restoreFocus = false) => {
+      const wasOpen = header.classList.contains("is-open");
+      header.classList.toggle("is-open", open);
+      document.documentElement.classList.toggle("menu-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      outsideHeader().forEach((element) => element.toggleAttribute("inert", open));
+
+      // The menu turns visible instantly on open (see .nav__menu transition), so it can take focus now
+      if (open && !wasOpen) header.querySelector<HTMLAnchorElement>(".nav__menu a")?.focus();
+      if (!open && wasOpen && restoreFocus) toggle.focus();
+    };
+
+    toggle.addEventListener("click", () => setOpen(!header.classList.contains("is-open"), true));
+    header.querySelectorAll(".nav__menu a").forEach((link) => link.addEventListener("click", () => setOpen(false)));
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && header.classList.contains("is-open")) setOpen(false, true);
+    });
+    window.matchMedia("(min-width: 601px)").addEventListener("change", (event) => {
+      if (event.matches) setOpen(false);
+    });
+  }
+</script>

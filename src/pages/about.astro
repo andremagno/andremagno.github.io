@@ -1,0 +1,64 @@
+---
+import Base from "../layouts/Base.astro";
+import site from "../data/site.json";
+
+const linkedin = site.redes.find((rede) => rede.nome === "LinkedIn");
+
+// Photo strip: André's own photos, resized into public/assets/about/
+const fotos = [
+  { src: "/assets/about/mountain.jpg", width: 675, height: 900, alt: "Forested mountains under a blue sky, with clouds settling in the valley" },
+  { src: "/assets/about/records.jpg", width: 675, height: 900, alt: "André riding an electric scooter on a sunny street corner" },
+  { src: "/assets/about/museum.jpg", width: 675, height: 900, alt: "Picasso's Les Demoiselles d'Avignon on a museum wall" },
+  { src: "/assets/about/cycling.jpg", width: 506, height: 900, alt: "A walk down a busy New York street lined with food carts" },
+  { src: "/assets/about/sunset.jpg", width: 675, height: 900, alt: "Sunset over the hills, framed by tree branches" },
+  { src: "/assets/about/coffee.jpg", width: 675, height: 900, alt: "Churros and coffee on a marble table in a traditional café" },
+];
+---
+
+<Base
+  title="About me"
+  description="André Magno, senior product designer in São Paulo: from front-end developer to product design at Itaú, Vivo, OLX, BHub and Globo, and what's next with AI."
+  image="/og/about.jpg"
+  footerCta
+>
+  <main class="about-page">
+    <section class="intro">
+      <h1 class="headline">About me</h1>
+    </section>
+
+    <section class="about-row" aria-label="Who I am">
+      <img class="about-row__photo" src="/assets/about-portrait.jpg" width="2000" height="1500" alt="André Magno in front of the Cloud Gate sculpture in Chicago, holding a coffee" />
+      <div class="about__text">
+        <p>I'm a senior product designer based in São Paulo. I started my career as a front-end developer and gradually moved into UX and product design, and I still work where the two meet.</p>
+        <p>For more than 10 years I've designed digital products for Globo, Itaú, Santander, OLX, BHub and Vivo: payments at OLX, business tools for small sellers at iti, the Vivo Valoriza redesign and BHub's design system.</p>
+        <p>I like turning complex business problems into simple solutions that scale. I move between product strategy and high-fidelity execution, from the first round of research to running a design system. Along the way I've mentored designers, run design reviews and helped hire for the teams I worked with.</p>
+        <p class="about__links">
+          {linkedin && <a class="link-line" href={linkedin.url} target="_blank" rel="me noopener">LinkedIn</a>}
+          {" ~ "}
+          <a class="link-line" href={`mailto:${site.email}`}>Email</a>
+          {" ~ "}
+          <a class="link-line" href={site.whatsapp} target="_blank" rel="noopener">WhatsApp</a>
+        </p>
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="interests-title">
+      <h2 class="about-section__title" id="interests-title">Inspirations & interests</h2>
+      <div class="about-columns about__text">
+        <p>Outside work I'm usually behind a camera, capturing trips, friends and the city.</p>
+        <p>I also play video games and keep an eye on new electronics, probably the front-end developer in me who still wants to know how things work.</p>
+      </div>
+      <div class="about-strip">
+        {fotos.map((foto) => <img src={foto.src} width={foto.width} height={foto.height} alt={foto.alt} loading="lazy" />)}
+      </div>
+    </section>
+
+    <section class="about-section" aria-labelledby="ahead-title">
+      <h2 class="about-section__title" id="ahead-title">Looking ahead</h2>
+      <div class="about-columns about__text">
+        <p>Lately most of my study time goes into how AI changes product work. At Globo I've been bringing Claude, Claude Code and Figma Make into the team's everyday flow, from exploration to prototypes that run.</p>
+        <p>That's where I want to keep going: product teams that design and test ideas faster, without losing care for the people using them.</p>
+      </div>
+    </section>
+  </main>
+</Base>

@@ -1,0 +1,26 @@
+{
+  "nome": "André Magno",
+  "cargo": "Product Designer",
+  "email": "andremagnox@gmail.com",
+  "whatsapp": "https://wa.me/5511958268815",
+  "redes": [
+    {
+      "nome": "LinkedIn",
+      "url": "https://www.linkedin.com/in/andremagnoo/"
+    }
+  ],
+  "menu": [
+    {
+      "nome": "Projects",
+      "url": "/#projects"
+    },
+    {
+      "nome": "About me",
+      "url": "/about/"
+    },
+    {
+      "nome": "Contact",
+      "url": "/#contact"
+    }
+  ]
+}
